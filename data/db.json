@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstname": "work",
+      "lastname": "work",
+      "email": "work.gmail.com",
+      "username": "test",
+      "phone": "test",
+      "password": "test"
+    },
+    {
+      "firstname": "divine",
+      "lastname": "divine",
+      "email": "divine@gmail.com",
+      "username": "divine",
+      "phone": "09028846151",
+      "password": "fordwinwam",
+      "id": "uojRzp7"
+    },
+    {
+      "firstname": "divine",
+      "lastname": "divine",
+      "email": "divine@gmail.com",
+      "username": "divine",
+      "phone": "09028846151",
+      "password": "fordwinwam",
+      "id": "RtcC3Dg"
+    }
+  ]
+}
