@@ -19,7 +19,7 @@
         </div>
 
         <div class="submitBox">
-            <button class="submit">Create an Account</button>
+            <button class="submit" @click="goToHome">Sign In</button>
         </div>
 
         <div id="signUp">Dont have an account? <router-link to="/Registration" id="signUp" style="color: #1a289">Sign up</router-link></div>
@@ -29,14 +29,21 @@
 
 <script>
 export default {
-name: "SignIn"
+    name: "SignIn",
+    methods: {
+        goToHome() {
+            this.$router.push({
+                name: 'home'
+            })
+        }
+    }
 }
 </script>
 
 <style scoped>
 body {
     background: #FEFEFE;
-}
+} 
 #signIn {
     display: flex;
     flex-direction: column;

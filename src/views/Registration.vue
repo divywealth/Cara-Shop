@@ -33,6 +33,7 @@
 
             <div class="submitBox">
             <button class="submit">Create an Account</button>
+            <div id="signUp">Already have an account?<router-link to="/SignIn" id="signUp" style="color: #1a289">Sign in</router-link></div>
         </div>
       </form>
   </div>
@@ -164,5 +165,13 @@ body {
     font-weight: bold;
     margin-top: 10px;
     font-family: sans-serif;
+}
+#signUp {
+    text-decoration: none;
+    color: #283D3F;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 </style>
