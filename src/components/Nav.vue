@@ -1,7 +1,7 @@
 <template>
   <div id="Navbar" >
       <nav id="Navbar">
-        <div id="header"> 
+        <div id="header">
             <router-link to="/">
                 <img src="../assets/Img/Logo.png" alt="pic not showing" class="Logo">
             </router-link>
@@ -82,7 +82,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 50px; 
+    padding: 0 50px;
 }
 .Logo {
     height: 80px;
@@ -117,7 +117,7 @@ nav {
     background: #FEFEFE;
     margin-left: -55px;
     border-radius: 5px;
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2); 
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
 }
 #user:hover #subUser ul {
 
