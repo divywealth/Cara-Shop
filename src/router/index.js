@@ -1,11 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Shop from '../views/Shop.vue'
-import Contact from '../views/Contact.vue'
 import Blog from '../views/Blog.vue'
-import Cart from '../views/Cart.vue'
-import SingleProduct from '../views/SingleProduct.vue'
 import SignIn from '../views/SignIn.vue'
 import Registration from '../views/Registration.vue'
 
@@ -15,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import(/* webpackChunkName: "homeview" */ '../views/HomeView.vue')
   },
   {
     path: '/about',
@@ -28,12 +23,12 @@ const routes = [
   {
     path: '/shop',
     name: 'shop',
-    component: Shop
+    component: () => import(/* webpackChunkName: "shop" */ '../views/Shop.vue')
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact
+    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
   },
   {
     path: '/blog',
@@ -43,7 +38,7 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: Cart
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
   },
   {
     path: '/Signin',
@@ -58,7 +53,7 @@ const routes = [
   {
     path: '/Products/:Id',
     name: 'SingleProduct',
-    component: SingleProduct
+    component:  () => import(/* webpackChunkName: "single-product" */ '../views/SingleProduct.vue')
   }
 ]
 
