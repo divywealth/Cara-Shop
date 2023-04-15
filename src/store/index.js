@@ -14,7 +14,7 @@ export default new Vuex.Store({
         img: 'f1.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$85',
+        price: 85,
         size: '',
         quantity: ''
       },
@@ -23,7 +23,7 @@ export default new Vuex.Store({
         img: 'f2.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$50',
+        price: 50,
         size: '',
         quantity: ''
       },
@@ -32,7 +32,7 @@ export default new Vuex.Store({
         img: 'f3.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$80',
+        price: 80,
         size: '',
         quantity: ''
       },
@@ -41,7 +41,7 @@ export default new Vuex.Store({
         img: 'f4.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$40',
+        price: 40,
         size: '',
         quantity: ''
       },
@@ -50,7 +50,7 @@ export default new Vuex.Store({
         img: 'f5.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$70',
+        price: 70,
         size: '',
         quantity: ''
       },
@@ -59,7 +59,7 @@ export default new Vuex.Store({
         img: 'f6.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$60',
+        price: 60,
         size: '',
         quantity: ''
       },
@@ -68,7 +68,7 @@ export default new Vuex.Store({
         img: 'f7.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$79',
+        price: 79,
         size: '',
         quantity: ''
       },
@@ -77,7 +77,7 @@ export default new Vuex.Store({
         img: 'f8.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$79',
+        price: 79,
         size: '',
         quantity: ''
       },
@@ -86,7 +86,7 @@ export default new Vuex.Store({
         img: 'nf1.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$60',
+        price: 60,
         size: '',
         quantity: ''
       },
@@ -95,7 +95,7 @@ export default new Vuex.Store({
         img: 'nf2.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$80',
+        price: 80,
         size: '',
         quantity: ''
       },
@@ -104,7 +104,7 @@ export default new Vuex.Store({
         img: 'nf3.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$50',
+        price: 50,
         size: '',
         quantity: ''
       },
@@ -113,7 +113,7 @@ export default new Vuex.Store({
         img: 'nf4.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -131,7 +131,7 @@ export default new Vuex.Store({
         img: 'nf6.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -140,7 +140,7 @@ export default new Vuex.Store({
         img: 'nf7.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -149,7 +149,7 @@ export default new Vuex.Store({
         img: 'nf8.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -162,7 +162,7 @@ export default new Vuex.Store({
         img: 'f1.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$85',
+        price: 85,
         size: '',
         quantity: ''
       },
@@ -171,7 +171,7 @@ export default new Vuex.Store({
         img: 'f2.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$50',
+        price: 50,
         size: '',
         quantity: ''
       },
@@ -180,7 +180,7 @@ export default new Vuex.Store({
         img: 'f3.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$80',
+        price: 80,
         size: '',
         quantity: ''
       },
@@ -189,14 +189,14 @@ export default new Vuex.Store({
         img: 'f4.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$40',
+        price: 40,
       },
       {
         id: 5,
         img: 'f5.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$70',
+        price: 70,
         size: '',
         quantity: ''
       },
@@ -205,7 +205,7 @@ export default new Vuex.Store({
         img: 'f6.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$60',
+        price: 60,
         size: '',
         quantity: ''
       },
@@ -214,7 +214,7 @@ export default new Vuex.Store({
         img: 'f7.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$79',
+        price: 79,
         size: '',
         quantity: ''
       },
@@ -223,7 +223,7 @@ export default new Vuex.Store({
         img: 'f8.jpeg',
         Designer: 'Normal-Shirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$79',
+        price: 79,
         size: '',
         quantity: ''
       },
@@ -236,7 +236,7 @@ export default new Vuex.Store({
         img: 'nf1.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$60',
+        price: 60,
         size: '',
         quantity: ''
       },
@@ -245,7 +245,7 @@ export default new Vuex.Store({
         img: 'nf2.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$80',
+        price: 80,
         size: '',
         quantity: ''
       },
@@ -254,7 +254,7 @@ export default new Vuex.Store({
         img: 'nf3.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$50',
+        price: 50,
         size: '',
         quantity: ''
       },
@@ -263,7 +263,7 @@ export default new Vuex.Store({
         img: 'nf4.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -272,14 +272,16 @@ export default new Vuex.Store({
         img: 'nf5.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
+        size: '',
+        quantity: ''
       },
       {
         id: 14,
         img: 'nf6.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -288,7 +290,7 @@ export default new Vuex.Store({
         img: 'nf7.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
@@ -297,18 +299,33 @@ export default new Vuex.Store({
         img: 'nf8.jpeg',
         Designer: 'Normal-tShirt',
         Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
+        price: 20,
         size: '',
         quantity: ''
       },
     ],
 
-    Carts: []
+    Carts: [],
+    shippingFee: 0,
+    cartTotals: 0
   },
   getters: {
     cartTotals(state) {
-      return 
+      for(let i=0; i<state.Carts.length; i++) {
+        state.cartTotals += state.Carts[i].price
+      }
+      return state.cartTotals
+    },
+    shippingFee(state) {
+      if(state.cartTotals >= 1 ) {
+        state.shippingFee = 200
+      }
+      return state.shippingFee
+    },
+    totals(state) {
+      return state.cartTotals + state.shippingFee
     }
+
   },
   mutations: {
     showSection2(state) {
@@ -321,10 +338,13 @@ export default new Vuex.Store({
     },
     AddToCart(state, product) {
       state.Carts.push(product)
-      console.log(state.Cart)
+      console.log(state.Carts)
     },
     handleSubmit(state) {
 
+    },
+    CancelFromCart(state, index) {
+      state.Carts.splice(index,1)
     }
   },
   actions: {

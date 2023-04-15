@@ -23,7 +23,7 @@
                 <option value="Large">Large</option>
             </select>
             <div>
-                <input type="number" value="1" v-model="quantity">
+                <input type="number" value="1" v-model="quantity" required>
                 <button class="fontStyle" @click="$store.commit('AddToCart', product)">Add To Cart</button>
             </div>
             <h4 class="fontStyle">Product Details</h4>

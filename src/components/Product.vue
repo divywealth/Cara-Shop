@@ -88,7 +88,7 @@ export default {
     width: 100%;
     height: 50%;
 }
-.productImage {
+#productImage img {
   width: 80%;
   height: 100%;
 }

@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import {fas} from '@fortawesome/free-solid-svg-icons'
-// import {far} from '@fortawesome/free-regular-svg-icons'
-// import {fab} from '@fortawesome/free-brands-svg-icons'
+import {far} from '@fortawesome/free-regular-svg-icons'
+import {fab} from '@fortawesome/free-brands-svg-icons'
 
 // import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 // import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +20,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 // import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 // import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-library.add(fas)
+library.add(fas, far, fab)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 

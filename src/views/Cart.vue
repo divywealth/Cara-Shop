@@ -1,14 +1,14 @@
 <template>
-    <div>
-      <Nav/>
-      
-      <div id="productBanner2">
-        <h2>#Cart</h2>
-        <p>Save more with coupons and up to 70% off!</p>
-    </div>
+  <div>
+    <Nav />
+
+    <IntroBanner>
+      <h2>#Cart</h2>
+      <p>Save more with coupons and up to 70% off!</p>
+    </IntroBanner>
 
     <section id="cart">
-      <table width="100%"> 
+      <table>
         <thead>
           <tr>
             <td>REMOVE</td>
@@ -21,12 +21,24 @@
         </thead>
         <tbody>
           <tr v-for="(cart, index) in $store.state.Carts" :key="index">
-            <td><font-awesome-icon icon="fa-solid fa-times-circle" class="Cancel"/></td>
-            <td><img :src="require(`../assets/Img/${cart.img}`)" alt="" class="Img"></td>
-            <td>{{cart.Name}}</td>
-            <td>{{cart.price}}</td>
-            <td>{{cart.quantity}}</td>
-            <td>{{cart.size}}</td>
+            <td>
+              <font-awesome-icon
+                icon="fa-solid fa-times-circle"
+                class="Cancel"
+                @click="$store.commit('CancelFromCart', index)"
+              />
+            </td>
+            <td>
+              <img
+                :src="require(`../assets/Img/${cart.img}`)"
+                alt=""
+                class="Img"
+              />
+            </td>
+            <td>{{ cart.Name }}</td>
+            <td>{{ cart.price }}</td>
+            <td>{{ cart.quantity }}</td>
+            <td>{{ cart.size }}</td>
           </tr>
         </tbody>
       </table>
@@ -39,50 +51,50 @@
           <tbody>
             <tr>
               <td>Cart Totals</td>
-              <td>dbfhbvdhbvv</td>
+              <td>{{ $store.getters.cartTotals }}</td>
             </tr>
             <tr>
               <td>Shipping Fee</td>
-              <td>dbfhbvdhbvv</td>
+              <td>{{ $store.getters.shippingFee }}</td>
             </tr>
             <tr>
               <td>Totals</td>
-              <td>dbfhbvdhbvv</td>
+              <td>{{ $store.getters.totals}}</td>
             </tr>
           </tbody>
         </table>
 
-        <button>Proceed To Checkout</button>
+        <button>Place order</button>
       </div>
     </section>
 
-    <Footer/>
-    </div>
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Nav from '../components/Nav.vue'
-import Footer from '../components/Footer.vue'
+import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue";
+import IntroBanner from "../components/Intro-Banner.vue";
 export default {
-    name: 'Cart',
-    components: {Nav, Footer}
-}
+  name: "Cart",
+  components: { Nav, Footer, IntroBanner },
+};
 </script>
 
 <style>
-#productBanner2 {
-  text-align: center;
-  padding: 20px 0;
-  background-image: url('../assets/Img/exploreImage.jpeg');
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+#productBanner2 h2 {
+  color: white;
+  font-size: 50px;
+  font-family: cursive;
+}
+#productBanner2 p {
+  color: #c2c2c5;
+  font-family: fantasy;
 }
 #cart {
   margin: 40px 40px;
+  overflow-x: auto;
 }
 #cart table {
   width: 100%;
@@ -96,9 +108,29 @@ export default {
 .Cancel {
   cursor: pointer;
 }
-#cart td {
+#cart table td:nth-child(1) {
   color: #606063;
   width: 100px;
+  font-family: sans-serif;
+  text-align: center;
+}
+#cart table td:nth-child(2) {
+  color: #606063;
+  width: 150px;
+  font-family: sans-serif;
+  text-align: center;
+}
+#cart table td:nth-child(3) {
+  color: #606063;
+  width: 250px;
+  font-family: sans-serif;
+  text-align: center;
+}
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6) {
+  color: #606063;
+  width: 150px;
   font-family: sans-serif;
   text-align: center;
 }
@@ -130,7 +162,6 @@ export default {
   border-collapse: collapse;
 }
 #cartTotals div table tbody {
-  
 }
 #cartTotals div table tbody td {
   border: 1px solid #d6dbd5;
@@ -148,5 +179,19 @@ export default {
 }
 #cartTotals div h2 {
   font-family: sans-serif;
+}
+
+@media only screen and (max-width: 860px) {
+}
+
+@media only screen and (max-width: 500px) {
+  #productBanner2 h2 {
+    font-size: 40px;
+  }
+  #cartTotals div {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #d5dad4;
+  }
 }
 </style>
