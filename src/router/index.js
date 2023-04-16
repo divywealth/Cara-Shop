@@ -54,6 +54,11 @@ const routes = [
     path: '/Products/:Id',
     name: 'SingleProduct',
     component:  () => import(/* webpackChunkName: "single-product" */ '../views/SingleProduct.vue')
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component:  () => import(/* webpackChunkName: "single-product" */ '../views/NotFound.vue')
   }
 ]
 
