@@ -7,12 +7,12 @@
             <!--lastname-->
             <label>LastName</label>
             <input type="text" placeholder="LastName" v-model="lastname" required>
-          <!--email-->
-          <label>Email</label>
-          <input type="email" placeholder="Email" v-model="email" required>
-          <!--phone-->
-          <label>Phone No</label>
-          <input type="tel" placeholder="Phone No" v-model="phoneNo" required>
+            <!--email-->
+            <label>Email</label>
+            <input type="email" placeholder="Email" v-model="email" required>
+            <!--phone-->
+            <label>Phone No</label>
+            <input type="tel" placeholder="Phone No" v-model="phoneNo" required>
 
             <label>Password</label>
             <input type="password" placeholder="password" v-model="password" required>
@@ -23,9 +23,9 @@
             <div v-if="errors.confirmPassword" class="formError"> {{errors.confirmPassword}} </div>
 
             <div class="submitBox">
-            <button class="submit">Create an Account</button>
+                <button class="submit">Create an Account</button>
+            </div>
             <div id="signUp">Already have an account?<router-link to="/SignIn" id="signUp" style="color: #1a289">Sign in</router-link></div>
-        </div>
       </form>
   </div>
 </template>
@@ -87,15 +87,7 @@ name: "Registration",
 body {
     background: #FEFEFE;
 }
-.two {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.input {
-    width: 50px;
-    border-radius: 20px;
-}
+
 #signIn {
     display: flex;
     flex-direction: column;
@@ -105,7 +97,7 @@ body {
     margin-top: 5%;
 }
 #signIn form {
-    text-align: left;
+    text-align:start;
 }
 #signIn h1 {
     font-family: sans-serif;
@@ -139,10 +131,11 @@ body {
     background-color: #283D3F;
     color: white;
     border: none;
-    padding: 10px 150px ;
+    padding: 10px 100px;
     cursor: pointer;
     margin-top: 20px;
     font-family: sans-serif;
+    white-space: nowrap
 }
 .formError{
     color: #ff0062;
@@ -159,9 +152,12 @@ body {
     font-size: 14px;
     letter-spacing: 1px;
 }
-@media only screen and (max-width: 860px) {
-   #signIn {
-    padding: 30px;
+@media only screen and (max-width: 896px) {
+   #signIn form input{
+    width: 330px;
+   }
+   #signIn{
+    
    }
 }
 </style>

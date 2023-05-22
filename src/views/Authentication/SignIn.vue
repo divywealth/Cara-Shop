@@ -167,9 +167,9 @@ body {
     margin-top: 10px;
     font-family: sans-serif;
 }
-@media only screen and (max-width: 860px) {
-   #signIn {
-    padding: 30px;
+@media only screen and (max-width: 896px) {
+   #signIn form input{
+    width: 330px;
    }
 }
 </style>
