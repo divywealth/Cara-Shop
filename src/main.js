@@ -24,8 +24,10 @@ library.add(fas, far, fab)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
-new Vue({
+const vm = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+export {vm}

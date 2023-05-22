@@ -2,16 +2,18 @@
   <div id="signIn">
         <h1>Welcome Back</h1>
     <p>Please enter your details</p>
-    <form action="">
-        <label>Email</label>
-        <input type="email" placeholder="Enter Your Email" required>
+    <form @submit.prevent="handleLogin">
+        <label>Phone No</label>
+        <input type="tel" placeholder="Enter phoneNo" v-model="phoneNo" required>
+        <div v-if="errors.phoneNo" class="formError">{{errors.phoneNo}}</div>
 
         <label>Password</label>
-        <input type="email" placeholder="Password" required>
+        <input type="password" placeholder="Password" v-model="password" required>
+        <div v-if="errors.password"  class="formError">{{errors.password}}</div>
 
         <div id="checkbox">
             <section>
-                <input type="checkbox" required>
+                <input type="checkbox">
                 <label>Remember Me</label>
             </section>
 
@@ -19,7 +21,7 @@
         </div>
 
         <div class="submitBox">
-            <button class="submit" @click="goToHome">Sign In</button>
+            <button class="submit">Sign In</button>
         </div>
 
         <div id="signUp">Dont have an account? <router-link to="/Registration" id="signUp" style="color: #1a289">Sign up</router-link></div>
@@ -30,12 +32,45 @@
 <script>
 export default {
     name: "SignIn",
-    methods: {
-        goToHome() {
-            this.$router.push({
-                name: 'home'
-            })
+    data() {
+        return {
+            phoneNo: '',
+            password: '',
+            errors: {
+                phoneNo: null,
+                password: null
+            },
+            phoneNoError: 'grjngrhg' 
         }
+    },
+    methods: {
+        async handleLogin(){
+            try {
+                const response = await this.$store.dispatch('handleLoginUser', {
+                    phoneNo: this.phoneNo, 
+                    password: this.password,
+                })
+                if (response){
+                    this.$router.push({
+                        name: 'home'
+                    })
+                }
+            } catch (error) {
+                this.errors.phoneNo = null
+                this.errors.password = null
+                if(error == "PhoneNo dosen't have an account try creating an account instead"){
+                    this.errors.phoneNo = error;
+                    return;
+                }else if(error == "Incorrect Password") {
+                    this.errors.password = error;
+                    return;
+                }
+            }
+            
+        }
+    },
+    mounted() {
+        
     }
 }
 </script>
@@ -124,5 +159,12 @@ body {
     color: #283D3F;
     font-size: 14px;
     letter-spacing: 1px;
+}
+.formError {
+    color: #ff0062;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: sans-serif;
 }
 </style>

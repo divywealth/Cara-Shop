@@ -79,6 +79,9 @@ import IntroBanner from "../components/Intro-Banner.vue";
 export default {
   name: "Cart",
   components: { Nav, Footer, IntroBanner },
+  mounted() {
+      
+    }
 };
 </script>
 
@@ -160,8 +163,6 @@ export default {
 #cartTotals div table {
   margin: 10px 0;
   border-collapse: collapse;
-}
-#cartTotals div table tbody {
 }
 #cartTotals div table tbody td {
   border: 1px solid #d6dbd5;

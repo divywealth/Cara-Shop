@@ -3,17 +3,17 @@
       <Nav/>
       <section class="firstSection">
         <div id="ImageBox">
-            <img :src="require(`../assets/Img/${product.img}`)" alt="" id="only" class="firstImage">
+            <img :src="product.img" alt="" id="only" class="firstImage">
             <div class="secondImage">
-                <div class="secondImageContainer"><img :src="require(`../assets/Img/${product.img}`)" alt="" class="firstImage"></div>
-                <div class="secondImageContainer"><img :src="require(`../assets/Img/${product.img}`)" alt="" class="firstImage"></div>
-                <div class="secondImageContainer"><img :src="require(`../assets/Img/${product.img}`)" alt="" class="firstImage"></div>
-                <div class="secondImageContainer"><img :src="require(`../assets/Img/${product.img}`)" alt="" class="firstImage"></div>
+                <div class="secondImageContainer"><img :src="product.img" alt="" class="firstImage"></div>
+                <div class="secondImageContainer"><img :src="product.img" alt="" class="firstImage"></div>
+                <div class="secondImageContainer"><img :src="product.img" alt="" class="firstImage"></div>
+                <div class="secondImageContainer"><img :src="product.img" alt="" class="firstImage"></div>
             </div>
         </div>
         <div id="WritingBox">
             <p class="fontStyle">Home / T-Shirt</p>
-            <h3 class="fontStyle">Men's Fashion T Shirt</h3>
+            <h3 class="fontStyle">{{product.name}}</h3>
             <h2 class="fontStyle">{{product.price}}</h2>
             <label for="" class="fontStyle">SIZE:</label>
             <select v-model="size" required>
@@ -24,7 +24,7 @@
             </select>
             <div>
                 <input type="number" value="1" v-model="quantity" required>
-                <button class="fontStyle" @click="$store.commit('AddToCart', product)">Add To Cart</button>
+                <button class="fontStyle" @click="">Add To Cart</button>
             </div>
             <h4 class="fontStyle">Product Details</h4>
             <span class="fontStyle">The Gildan Ultra Cotton t-Shirt is made from a substantial 6.0 oz. per
@@ -35,33 +35,42 @@
             </span>
         </div>
       </section>
-      <Signup/>
+      <Signup />
       <Footer/>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
-import Nav from '../components/Nav.vue'
-import Footer from '../components/Footer.vue'
-import Signup from '../components/Signup.vue'
+import { onMounted } from 'vue';
+import Nav from '../components/Nav.vue';
+import Footer from '../components/Footer.vue';
+import Signup from '../components/Signup.vue';
+import {mapState} from 'vuex';
 export default {
     name: "SingleProduct",
     components: {Nav, Footer, Signup},
     data() {
         return {
-            product: {},
+            product: null,
             size: '',
             quantity: '1',
         }
     },
     mounted() {
-        this.product = this.$route.params.product  
+        console.log(this.Products);
+        const params = this.$route.params.id;
+        this.product = this.Products.find(product => product.id == params);
+        console.log(this.product)
+        
     },
     updated() {
-        this.product.size = this.size
-        this.product.quantity = this.quantity
+        //this.product.size = this.size
+        //this.product.quantity = this.quantity
     },
+    computed: {
+        ...mapState(['user', 'Products']),
+    }
+    
 }
 </script>
 

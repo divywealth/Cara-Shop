@@ -1,13 +1,13 @@
 <template>
   <div id="productContainer" @click="goToSingleProduct">
       <div id="productImage">
-        <img  alt="Not Showing" :src="require(`../assets/Img/${product.img}`)" class="productImage">
+        <img  alt="Not Showing" :src="product.img" class="productImage">
           <slot name="Img"></slot>
       </div>
       <div id="productDetails">
-          <span class="productDesigner">{{product.Designer}}</span>
+          <span class="productDesigner">{{product.designer}}</span>
           <slot name="Designer"></slot>
-          <h5 class="productName">{{product.Name}}</h5>
+          <h5 class="productName">{{product.name}}</h5>
           <slot name="Name"></slot>
           <div class="star">
               <font-awesome-icon icon="fa-solid fa-star" class="starIcon"/>
@@ -31,16 +31,18 @@ export default {
     props: ['product'],
     methods: {
       goToSingleProduct() {
+        //this.$store.state.singleProduct = null
+        //this.$store.state.singleProduct = this.product
+        //console.log(this.$store.state.singleProduct)
         this.$router.push({
           name: "SingleProduct",
-           
-           params: {
-                    product: this.product,
-                    Id: this.product.id
-                    
-                }
+          params: {
+            id: this.product.id
+          }
         })
       }
+    },
+    mounted() {
     }
 }
 </script>

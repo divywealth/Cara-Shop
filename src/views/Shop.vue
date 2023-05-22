@@ -10,7 +10,7 @@
     <section v-if="$store.state.section1">
       <div id="productSpace">
         <Product
-          v-for="(product, index) in $store.state.Products"
+          v-for="(product, index) in products"
           :key="index"
           :product="product"
         />
@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <Signup />
+    <Signup/>
 
     <Footer />
   </div>
@@ -65,12 +65,29 @@ import Footer from "../components/Footer.vue";
 import Product from "../components/Product.vue";
 import Signup from "../components/Signup.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
+import {mapState} from 'vuex';
 export default {
   name: "Shop",
   components: { Nav, Footer, Product, Signup, IntroBanner },
   data() {
     return {};
   },
+  mounted() {
+    this.getProducts()
+  },
+  methods: {
+    async getProducts() {
+      try {
+        const response = this.$store.dispatch('handleGetProduct')
+        return response
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  computed: {
+    ...mapState(['products'])
+  }
 };
 </script>
 

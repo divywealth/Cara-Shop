@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Blog from '../views/Blog.vue'
-import SignIn from '../views/SignIn.vue'
-import Registration from '../views/Registration.vue'
+import store from '../store/index.js'
 
 Vue.use(VueRouter)
 
@@ -31,41 +29,70 @@ const routes = [
     component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
   },
   {
-    path: '/blog',
-    name: 'blog',
-    component: Blog
-  },
-  {
     path: '/cart',
     name: 'cart',
-    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
+    meta: {needsAuth: true}
   },
   {
-    path: '/Signin',
+    path: '/signin',
     name: 'SignIn',
-    component: SignIn
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Authentication/SignIn.vue'),
+    meta: {noAuth: true}
   },
   {
-    path: '/Registration',
+    path: '/registration',
     name: 'Registration',
-    component: Registration
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Authentication/Registration.vue'),
+    meta: {noAuth: true}
   },
   {
-    path: '/Products/:Id',
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue'),
+    metha: {needsAuth: true}
+  },
+  {
+    path: '/:id',
     name: 'SingleProduct',
-    component:  () => import(/* webpackChunkName: "single-product" */ '../views/SingleProduct.vue')
+    component:  () => import(/* webpackChunkName: "single-product" */ '../views/SingleProduct.vue'),
+    meta: {needsAuth: true}
   },
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component:  () => import(/* webpackChunkName: "single-product" */ '../views/NotFound.vue')
-  }
+  },
+  
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.needsAuth) {
+    if(store.state.user) {
+      next()
+    }
+    else{
+      next('/signin')
+    }
+  }else {
+    next()
+  }
+
+  if(to.meta.noAuth) {
+    if(!store.state.user) {
+      next()
+    }else {
+      next('/')
+    }
+  }else {
+    next()
+  }
 })
 
 export default router

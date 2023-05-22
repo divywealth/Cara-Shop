@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--NavigationToolBar-->
-    <Nav />
+    <Nav/>
     <!--Body-->
     <div class="imageBox">
       <div class="writingBox">
@@ -86,7 +86,7 @@
 
       <div class="productSpace">
         <Product
-          v-for="(product, index) in $store.state.Featuredproducts"
+          v-for="(product, index) in featuredproducts"
           :key="index"
           :product="product"
         />
@@ -119,7 +119,7 @@
 
     <!--SignUp-->
 
-    <Signup />
+    <Signup v-if="!user"/>
     <!--Footer-->
     <Footer />
   </div>
@@ -132,9 +132,22 @@ import Feature from "../components/Feature.vue";
 import Product from "../components/Product.vue";
 import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
+import {mapState} from 'vuex';
+import { format } from 'date-fns';
 export default {
-  name: "HomeView",
+  name: "home",
   components: { Nav, Feature, Product, Footer, Signup },
+  data() {
+    return {
+      featuredProducts: {}
+    }
+  },
+  mounted() {
+    this.$store.commit("AUTO_LOGOUT");
+  },
+  computed: {
+    ...mapState(['user', 'products'])
+  }
 };
 </script>
 

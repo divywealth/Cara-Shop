@@ -1,235 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {userActions} from './actions/useractions';
+import {productActions} from './actions/productactions';
+import {authMutations} from './mutations/authmutations';
+import createPersistedState from "vuex-persistedstate";
+import VueJwtDecode from 'vue-jwt-decode'
+import { format } from 'date-fns';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    user: null,
+    token: null,
     section1: true,
     section2: false,
+    singleProduct: null,
     showcompleteNumbers: false,
-    Products: [
-      {
-        id: 1,
-        img: 'f1.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 85,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 2,
-        img: 'f2.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 50,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 3,
-        img: 'f3.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 80,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 4,
-        img: 'f4.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 40,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 5,
-        img: 'f5.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 70,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 6,
-        img: 'f6.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 60,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 7,
-        img: 'f7.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 79,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 8,
-        img: 'f8.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 79,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 9,
-        img: 'nf1.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 60,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 10,
-        img: 'nf2.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 80,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 11,
-        img: 'nf3.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 50,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 12,
-        img: 'nf4.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 20,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 13,
-        img: 'nf5.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: '$20',
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 14,
-        img: 'nf6.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 20,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 15,
-        img: 'nf7.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 20,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 16,
-        img: 'nf8.jpeg',
-        Designer: 'Normal-tShirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 20,
-        size: '',
-        quantity: ''
-      },
-    ],
-
-
-    Featuredproducts: [
-      {
-        id: 1,
-        img: 'f1.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 85,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 2,
-        img: 'f2.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 50,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 3,
-        img: 'f3.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 80,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 4,
-        img: 'f4.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 40,
-      },
-      {
-        id: 5,
-        img: 'f5.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 70,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 6,
-        img: 'f6.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 60,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 7,
-        img: 'f7.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 79,
-        size: '',
-        quantity: ''
-      },
-      {
-        id: 8,
-        img: 'f8.jpeg',
-        Designer: 'Normal-Shirt',
-        Name: 'Cartoon Astronaut T-shirt',
-        price: 79,
-        size: '',
-        quantity: ''
-      },
-    ],
-
-
+    products: {},
     Newarrival: [
       {
         id: 9,
@@ -304,10 +92,13 @@ export default new Vuex.Store({
         quantity: ''
       },
     ],
-
     Carts: [],
     shippingFee: 0,
-    cartTotals: 0
+    cartTotals: 0,
+    registrationPasswordError: '',
+    registrationConfirmPasswordError: '',
+    loginPhoneNoError: '',
+    loginPasswordError: '',
   },
   getters: {
     cartTotals(state) {
@@ -328,6 +119,25 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    SET_USER(state, payload){
+        Vue.set(state, 'user', payload);
+    },
+    SET_TOKEN(state, payload){
+        Vue.set(state, 'token', payload);
+    },
+    SET_PRODUCT(state, payload) {
+      Vue.set(state, 'products', payload)
+    },
+    AUTO_LOGOUT(state) {
+      const decodedToken = VueJwtDecode.decode(state.token)
+      const exp = decodedToken.exp
+      const tokenExpDate = format(new Date( exp * 1000), 'yyy-MM-dd-hh-mm-ss');
+      const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
+      if(currentDate > tokenExpDate){
+        state.user = null;
+        state.token = null;
+      }
+    },
     showSection2(state) {
       state.section1 = false
       state.section2 = true
@@ -345,10 +155,25 @@ export default new Vuex.Store({
     },
     CancelFromCart(state, index) {
       state.Carts.splice(index,1)
+    },
+    handleGetProduct(state, payload) {
+      console.log(payload)
+      state.Products = payload
+    },
+    handleLogOut(state) {
+      state.user = null;
+      state.token = null
     }
   },
   actions: {
+    ...userActions,
+    ...productActions
   },
   modules: {
-  }
+  },
+  plugins: [
+    createPersistedState({
+      key: 'cara-shop'
+    })
+  ]
 })

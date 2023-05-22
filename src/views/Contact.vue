@@ -79,7 +79,7 @@
       </div>
     </section>
 
-    <Signup />
+    <Signup v-if="!user"/>
     <Footer />
   </div>
 </template>
@@ -89,9 +89,13 @@ import Nav from "../components/Nav.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
 import Signup from "../components/Signup.vue";
 import Footer from "../components/Footer.vue";
+import {mapState} from 'vuex'
 export default {
   name: "Contact",
   components: { Nav, IntroBanner, Signup, Footer },
+  computed: {
+    ...mapState(['user'])
+  }
 };
 </script>
 

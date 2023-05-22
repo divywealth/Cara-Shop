@@ -15,7 +15,10 @@
             <li><router-link to="/shop">Shop</router-link></li>
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
-            <li id="user">
+            <li v-if="user" id="greetings">
+              <font-awesome-icon icon="fa-solid fa-user-check" /> <span> Hi, {{user.firstName}}</span>
+            </li>
+            <li id="user" v-if="!user">
               <font-awesome-icon icon="fa-solid fa-user" />
               <div id="subUser">
                 <ul>
@@ -43,10 +46,12 @@
 
         <div class="navigation2" v-show="showMenuTab">
           <ul>
-            <li>
+            <li id="timesSignOut">
               <font-awesome-icon icon="fa-solid fa-times" @click="showMenu" />
+              <span v-if="!user" @click="goToSignIn" ><router-link to="#">Sign In</router-link></span>
+              <span v-if="user" @click="handleLogOut"><router-link to="#">Sign Out</router-link></span>
             </li>
-            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/home">Home</router-link></li>
             <li><router-link to="/shop">Shop</router-link></li>
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
@@ -58,6 +63,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "Nav",
   data() {
@@ -75,7 +81,13 @@ export default {
         name: "SignIn",
       });
     },
+   async handleLogOut() {
+      const response = await this.$store.commit('handleLogOut')
+    }
   },
+  computed: {
+    ...mapState(['user'])
+  }
 };
 </script>
 
@@ -99,10 +111,14 @@ nav {
 .Logo {
   height: 80px;
 }
-.navigation ul li {
-  display: inline-block;
-  margin: 20px;
+.navigation ul {
+  display: inline-flex;
   list-style: none;
+  position: relative;
+}
+
+.navigation ul li {
+  margin: 15px;
   font-family: sans-serif;
   position: relative;
 }
@@ -130,8 +146,6 @@ nav {
   margin-left: -55px;
   border-radius: 5px;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-}
-#user:hover #subUser ul {
 }
 #user:hover #subUser ul li {
   white-space: nowrap;
@@ -220,6 +234,14 @@ nav {
   bottom: -4px;
   left: 0;
 }
+#greetings {
+  cursor: pointer;
+  position: relative;
+  transition: ease-in 8s;
+}
+#greetings span {
+  margin-left: 4px;
+} 
 
 @media only screen and (max-width: 500px) {
   .navigation ul {
@@ -235,6 +257,15 @@ nav {
   }
   #header {
     padding: 0 30px;
+  }
+  #timesSignOut {
+    display: flex;
+    justify-content: space-between;
+  }
+  #timesSignOut a {
+    color: #088178;
+    margin-left: 180px;
+    text-decoration: none;
   }
 }
 </style>
