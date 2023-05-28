@@ -11,22 +11,24 @@
         <h2>Visit one of our agency locations or contact us today</h2>
         <h3>Head Office</h3>
         <div id="details-alignment">
-          <li>
-            <font-awesome-icon icon="fa-regular fa-map" />
-            <p>17 Adedokun Street off Alagbado Lagos</p>
-          </li>
-          <li>
-            <font-awesome-icon icon="fa-regular fa-envelope" />
-            <p>Divywealth1@gmail.com</p>
-          </li>
-          <li>
-            <font-awesome-icon icon="fa-solid fa-phone" />
-            <p>+2349018317817</p>
-          </li>
-          <li>
-            <font-awesome-icon icon="fa-regular fa-clock" />
-            <p>Monday to Saturday: 9:00Am to 8:00Pm</p>
-          </li>
+          <ul>
+            <li>
+              <font-awesome-icon icon="fa-regular fa-map" />
+              <p>17 Adedokun Street off Alagbado Lagos</p>
+            </li>
+            <li>
+              <font-awesome-icon icon="fa-regular fa-envelope" />
+              <p>Divywealth1@gmail.com</p>
+            </li>
+            <li>
+              <font-awesome-icon icon="fa-solid fa-phone" />
+              <p>+2349018317817</p>
+            </li>
+            <li>
+              <font-awesome-icon icon="fa-regular fa-clock" />
+              <p>Monday to Saturday: 9:00Am to 8:00Pm</p>
+            </li>
+          </ul>
         </div>
       </div>
       <div id="firstSectionMap">
@@ -50,7 +52,6 @@
           <input type="email" placeholder="E-mail" />
           <input type="text" placeholder="Subject" />
           <textarea
-            type="text"
             cols="30"
             rows="10"
             placeholder="Message..."
@@ -149,7 +150,7 @@ export default {
 #details-alignment li {
   list-style: none;
   display: flex;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 #details-alignment li p {
   margin-left: 20px;

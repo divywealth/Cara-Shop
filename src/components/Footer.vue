@@ -45,7 +45,7 @@ export default {
     },
     methods: {
       async handleLogOut() {
-        const response = await this.$store.commit('handleLogOut')
+        await this.$store.commit('handleLogOut')
       }
     }
 }
@@ -83,7 +83,7 @@ export default {
   height: 100%;
 }
 #footer {
-  padding: 50px 10px 0px 50px;
+  padding: 50px 10px 0 50px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

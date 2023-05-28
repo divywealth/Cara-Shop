@@ -1,4 +1,4 @@
-import {getProducts} from '../../apis/productApis'
+import {getProducts} from '@/apis/productApis'
 
 export const productActions = {
      async handleGetProduct({commit}) {

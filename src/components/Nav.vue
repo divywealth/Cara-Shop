@@ -82,7 +82,7 @@ export default {
       });
     },
    async handleLogOut() {
-      const response = await this.$store.commit('handleLogOut')
+     await this.$store.commit('handleLogOut')
     }
   },
   computed: {
@@ -127,7 +127,6 @@ nav {
   color: black;
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
   transition: 1s;
 }
 .navigation ul li a:hover {
@@ -207,7 +206,6 @@ nav {
   color: black;
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
   transition: 1s;
 }
 .navigation2 ul li a:hover {

@@ -24,28 +24,28 @@
       <div class="shopNumberContainer" @click="$store.commit('showSection2')">
         2
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         3
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         4
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         5
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         6
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         7
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         8
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         9
       </div>
-      <div class="shopNumberContainer" v-if="$store.state.showcompleteNumbers">
+      <div class="shopNumberContainer" v-if="$store.state.showCompleteNumbers">
         10
       </div>
       <div class="shopNumberContainer">
@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <Signup/>
+    <Signup v-if="$store.state.user"/>
 
     <Footer />
   </div>
@@ -81,7 +81,7 @@ export default {
         const response = this.$store.dispatch('handleGetProduct')
         return response
       } catch (error) {
-        console.log(error)
+        throw error
       }
     }
   },
@@ -122,10 +122,6 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   font-family: sans-serif;
-}
-#Testing {
-  height: 20vh;
-  background: blue;
 }
 
 @media only screen and (max-width: 860px) {

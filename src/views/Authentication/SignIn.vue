@@ -24,7 +24,7 @@
             <button class="submit">Sign In</button>
         </div>
 
-        <div id="signUp">Dont have an account? <router-link to="/Registration" id="signUp" style="color: #1a289">Sign up</router-link></div>
+        <div id="signUp">Dont have an account? <router-link to="/Registration" id="signUp">Sign up</router-link></div>
     </form>
   </div>
 </template>
@@ -51,17 +51,17 @@ export default {
                     password: this.password,
                 })
                 if (response){
-                    this.$router.push({
+                    await this.$router.push({
                         name: 'home'
                     })
                 }
             } catch (error) {
                 this.errors.phoneNo = null
                 this.errors.password = null
-                if(error == "PhoneNo dosen't have an account try creating an account instead"){
+                if(error === "PhoneNo dosen't have an account try creating an account instead"){
                     this.errors.phoneNo = error;
                     return;
-                }else if(error == "Incorrect Password") {
+                }else if(error === "Incorrect Password") {
                     this.errors.password = error;
                     return;
                 }

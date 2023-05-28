@@ -25,13 +25,12 @@
             <div class="submitBox">
                 <button class="submit">Create an Account</button>
             </div>
-            <div id="signUp">Already have an account?<router-link to="/SignIn" id="signUp" style="color: #1a289">Sign in</router-link></div>
+            <div id="signUp">Already have an account?<router-link to="/SignIn" id="signUp">Sign in</router-link></div>
       </form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 name: "Registration",
     data() {
@@ -70,7 +69,7 @@ name: "Registration",
                 })
                 console.log(response);
                 if (response){
-                    this.$router.push({
+                    await this.$router.push({
                         name: 'home'
                     });
                 } 

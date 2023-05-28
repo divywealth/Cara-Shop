@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import { onMounted } from 'vue';
 import Nav from '../components/Nav.vue';
 import Footer from '../components/Footer.vue';
 import Signup from '../components/Signup.vue';
@@ -57,9 +56,9 @@ export default {
         }
     },
     mounted() {
-        console.log(this.Products);
+        console.log(this.products);
         const params = this.$route.params.id;
-        this.product = this.Products.find(product => product.id == params);
+        this.product = this.products.find(singleProduct => singleProduct.id == params);
         console.log(this.product)
         
     },
@@ -68,7 +67,7 @@ export default {
         //this.product.quantity = this.quantity
     },
     computed: {
-        ...mapState(['user', 'Products']),
+        ...mapState(['user', 'products']),
     }
     
 }
@@ -167,7 +166,7 @@ export default {
     }
     #ImageBox {
     width: 100%;
-    margin: 20px 0px;
+    margin: 20px 0;
     align-items: center;
     }
     #WritingBox{

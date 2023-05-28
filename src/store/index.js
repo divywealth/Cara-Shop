@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {userActions} from './actions/useractions';
-import {productActions} from './actions/productactions';
-import {authMutations} from './mutations/authmutations';
+import { userActions } from './actions/useractions';
+import { productActions } from './actions/productactions';
+import { authMutations } from './mutations/authmutations';
 import createPersistedState from "vuex-persistedstate";
 import VueJwtDecode from 'vue-jwt-decode'
 import { format } from 'date-fns';
+
 
 Vue.use(Vuex)
 
@@ -16,9 +17,9 @@ export default new Vuex.Store({
     section1: true,
     section2: false,
     singleProduct: null,
-    showcompleteNumbers: false,
+    showCompleteNumbers: false,
     products: {},
-    Newarrival: [
+    NewArrival: [
       {
         id: 9,
         img: 'nf1.jpeg',
@@ -100,15 +101,16 @@ export default new Vuex.Store({
     loginPhoneNoError: '',
     loginPasswordError: '',
   },
+
   getters: {
     cartTotals(state) {
-      for(let i=0; i<state.Carts.length; i++) {
+      for (let i = 0; i < state.Carts.length; i++) {
         state.cartTotals += state.Carts[i].price
       }
       return state.cartTotals
     },
     shippingFee(state) {
-      if(state.cartTotals >= 1 ) {
+      if (state.cartTotals >= 1) {
         state.shippingFee = 200
       }
       return state.shippingFee
@@ -118,12 +120,13 @@ export default new Vuex.Store({
     }
 
   },
+
   mutations: {
-    SET_USER(state, payload){
-        Vue.set(state, 'user', payload);
+    SET_USER(state, payload) {
+      Vue.set(state, 'user', payload);
     },
-    SET_TOKEN(state, payload){
-        Vue.set(state, 'token', payload);
+    SET_TOKEN(state, payload) {
+      Vue.set(state, 'token', payload);
     },
     SET_PRODUCT(state, payload) {
       Vue.set(state, 'products', payload)
@@ -131,11 +134,11 @@ export default new Vuex.Store({
     AUTO_LOGOUT(state) {
       const decodedToken = VueJwtDecode.decode(state.token)
       const exp = decodedToken.exp
-      const tokenExpDate = format(new Date( exp * 1000), 'yyy-MM-dd-hh-mm-ss');
+      const tokenExpDate = format(new Date(exp * 1000), 'yyy-MM-dd-hh-mm-ss');
       const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
-      if(currentDate > tokenExpDate){
-        state.user = null;
-        state.token = null;
+      if (currentDate > tokenExpDate) {
+        Vue.set(state, 'user', null)
+        Vue.set(state, 'token', null)
       }
     },
     showSection2(state) {
@@ -154,7 +157,7 @@ export default new Vuex.Store({
 
     },
     CancelFromCart(state, index) {
-      state.Carts.splice(index,1)
+      state.Carts.splice(index, 1)
     },
     handleGetProduct(state, payload) {
       console.log(payload)

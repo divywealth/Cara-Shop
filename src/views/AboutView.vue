@@ -206,7 +206,7 @@ export default {
     text-align: center;
     font-size: 20px;
     line-height: 1.5;
-    padding: 0px 15px;
+    padding: 0 15px;
     font-family: monospace;
   }
   #feature {
@@ -214,9 +214,6 @@ export default {
   }
   .featureStyle {
     margin: 5px 5px;
-  }
-  #Box {
-    width: 145px;
   }
 }
 

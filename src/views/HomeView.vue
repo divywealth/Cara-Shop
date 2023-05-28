@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--NavigationToolBar-->
-    <Nav/>
+    <Nav />
     <!--Body-->
     <div class="imageBox">
       <div class="writingBox">
@@ -12,7 +12,6 @@
         <button>Shop Now</button>
       </div>
     </div>
-
     <!--feature-->
     <div id="feature">
       <Feature class="featureStyle">
@@ -110,7 +109,7 @@
       </div>
       <div class="productSpace">
         <Product
-          v-for="(product, index) in $store.state.Newarrival"
+          v-for="(product, index) in newArrival"
           :key="index"
           :product="product"
         />
@@ -119,7 +118,7 @@
 
     <!--SignUp-->
 
-    <Signup v-if="!user"/>
+    <Signup v-if="!user" />
     <!--Footer-->
     <Footer />
   </div>
@@ -132,22 +131,38 @@ import Feature from "../components/Feature.vue";
 import Product from "../components/Product.vue";
 import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
-import {mapState} from 'vuex';
-import { format } from 'date-fns';
+import { mapState } from "vuex";
+import { format } from "date-fns";
 export default {
   name: "home",
   components: { Nav, Feature, Product, Footer, Signup },
   data() {
     return {
-      featuredProducts: {}
-    }
+      featuredProducts: {},
+      newArrival: {},
+    };
   },
   mounted() {
     this.$store.commit("AUTO_LOGOUT");
+    this.GET_NEW_PRODUCT_ARRIVAL();
+    this.GET_FEATURED_PRODUCT();
+  },
+  methods: {
+    GET_NEW_PRODUCT_ARRIVAL() {
+      const currentDate = format(
+        new Date,
+        "yyy-MM-dd-hh-mm-ss"
+      );
+      console.log(currentDate);
+      console.log(this.newArrival);
+    },
+    GET_FEATURED_PRODUCT() {
+
+    },
   },
   computed: {
-    ...mapState(['user', 'products'])
-  }
+    ...mapState(["user", "products"]),
+  },
 };
 </script>
 
@@ -164,29 +179,35 @@ export default {
   justify-content: center;
   align-items: flex-start;
 }
+
 .writingBox {
   padding: 0 0 0 80px;
 }
+
 .imageBox h4 {
   font-size: 20px;
   font-family: sans-serif;
 }
+
 .imageBox h2 {
   font-size: 46px;
   line-height: 54px;
   font-family: sans-serif;
 }
+
 .imageBox h1 {
   font-size: 50px;
   line-height: 64px;
   font-family: sans-serif;
   color: #088178;
 }
+
 .imageBox p {
   font-size: 16px;
   margin: 15px 0 20px 0;
   font-family: sans-serif;
 }
+
 .imageBox button {
   cursor: pointer;
   background: rgb(197, 111, 12);
@@ -205,9 +226,11 @@ export default {
   flex-wrap: wrap;
   padding: 40px 35px;
 }
+
 .featureStyle {
   padding: 15px 5px;
 }
+
 .writingStyle {
   font-family: sans-serif;
   font-size: 15px;
@@ -217,21 +240,27 @@ export default {
   border-radius: 4px;
   display: inline-block;
 }
+
 #backgroundStyle1 {
   background: #fddde4;
 }
+
 #backgroundStyle2 {
   background: #cdebbc;
 }
+
 #backgroundStyle3 {
   background: #d1e8f2;
 }
+
 #backgroundStyle4 {
   background: #cdd4f8;
 }
+
 #backgroundStyle5 {
   background: #f6dbf6;
 }
+
 #backgroundStyle6 {
   background: #fff2e5;
 }
@@ -240,15 +269,19 @@ export default {
   text-align: center;
   padding: 20px 0;
 }
+
 .productBanner h2 {
   font-size: 55px;
 }
+
 .productBanner p {
   line-height: 2;
 }
+
 .productBannerText {
   font-family: sans-serif;
 }
+
 .productSpace {
   display: flex;
   justify-content: space-between;
@@ -256,6 +289,7 @@ export default {
   padding-top: 20px;
   margin: 30px;
 }
+
 #productBanner2 {
   text-align: center;
   padding: 20px 0;
@@ -267,18 +301,22 @@ export default {
   align-items: center;
   margin-top: 30px;
 }
+
 #productBanner2 h4 {
   color: white;
   font-size: 16px;
 }
+
 #productBanner2 h2 {
   color: white;
   line-height: 2;
   font-size: 40px;
 }
+
 #productBanner2 h2 span {
   color: #ef3636;
 }
+
 #productBanner2 button {
   font-size: 14px;
   font-weight: 600;
@@ -288,6 +326,7 @@ export default {
   border: none;
   transition: 0.4s ease;
 }
+
 #productBanner2 button:hover {
   background-color: #088178;
 }
@@ -296,62 +335,61 @@ export default {
   #feature {
     justify-content: center;
   }
-  #productSpace {
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 30px;
-  }
+
   .featureStyle {
     margin: 5px 5px;
   }
+
   #productBanner2 {
     height: 25vh;
   }
-  #productSpace {
-    margin: 10px;
-  }
 }
+
 @media only screen and (max-width: 500px) {
   .writingBox {
     padding: 0 0 0 30px;
   }
+
   .imageBox {
     height: 70vh;
   }
+
   .imageBox h2 {
     font-size: 40px;
     line-height: 50px;
   }
+
   .imageBox h1 {
     font-size: 40px;
     line-height: 50px;
   }
+
   .imageBox p {
     font-size: 18px;
   }
+
   #feature {
     padding: 40px 20px;
   }
-  #Box {
-    width: 145px;
-  }
+
   #productBanner2 {
     height: 30vh;
   }
+
   #productBanner2 h2 {
     font-size: 34px;
   }
+
   .productBanner h2 {
     font-size: 45px;
   }
-  #productSpace {
-    margin: 5px;
-  }
 }
+
 @media only screen and (max-width: 390px) {
   .productBanner h2 {
     font-size: 35px;
   }
+
   #productBanner2 h2 {
     font-size: 30px;
   }
