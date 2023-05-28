@@ -35,7 +35,7 @@
             </span>
         </div>
       </section>
-      <Signup />
+      <Signup v-if="!user"/>
       <Footer/>
   </div>
 </template>

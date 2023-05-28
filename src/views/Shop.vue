@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <Signup v-if="$store.state.user"/>
+    <Signup v-if="!$store.state.user"/>
 
     <Footer />
   </div>
