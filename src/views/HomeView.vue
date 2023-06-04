@@ -138,7 +138,7 @@ export default {
   components: { Nav, Feature, Product, Footer, Signup },
   data() {
     return {
-      featuredProducts: {},
+      featuredproducts: {},
       newArrival: {},
     };
   },
@@ -153,11 +153,12 @@ export default {
         new Date,
         "yyy-MM-dd-hh-mm-ss"
       );
-      console.log(currentDate);
-      console.log(this.newArrival);
+      //console.log(currentDate);
+      //console.log(this.newArrival);
     },
     GET_FEATURED_PRODUCT() {
-
+      const filtered =  this.products.filter((product) => product.price == 60)
+      this.featuredproducts = filtered
     },
   },
   computed: {

@@ -1,4 +1,5 @@
 import {BASIC_HTTP} from './axiosClient'
+import store from '../store/index.js'
 
 export const registerApi = async (data) => {
     try {

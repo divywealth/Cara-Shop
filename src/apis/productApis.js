@@ -1,4 +1,6 @@
-import { BASIC_HTTP } from "./axiosClient";
+import { BASIC_HTTP, BEARER_HTTP } from "./axiosClient";
+import store from '../store/index.js'
+import { Store } from "vuex";
 
 export const getProducts = async () => {
     try {
@@ -6,5 +8,40 @@ export const getProducts = async () => {
         return response.data;
     } catch (error) {
         throw error.response.data.message
+    }
+}
+
+export const addProduct = async (data) => {
+    try {
+        const response = await BEARER_HTTP.post('v1/userproduct', data)
+        return response.data;
+    } catch (error) {
+        throw error.response.data
+    }
+}
+
+export const getCart = async () => {
+    try {
+        const response = await BEARER_HTTP.get('v1/users/:userId/products')
+        return response.data;
+    } catch (error) {
+        throw error.response.data
+    }
+}
+
+export const removeUserProduct = async (id) => {
+    try {
+        const response = await BASIC_HTTP.delete(`v1/userproduct/${id}`)
+        return response
+    } catch (error) {
+        throw error
+    }
+}
+
+export const addToCart = async () => {
+    try {
+        const response = await BEARER_HTTP.post('v1/order')
+    } catch (error) {
+        throw error.response.data
     }
 }

@@ -17,7 +17,7 @@
             <font-awesome-icon icon="fa-solid fa-star" class="starIcon"/>
           </div>
           <div id="priceSection">
-              <h4 class="productPrice">{{product.price}}</h4>
+              <h4 class="productPrice">${{product.price}}</h4>
               <slot name="Price"></slot>
               <router-link to=""><font-awesome-icon icon="fa-solid fa-cart-shopping" id="cartIcon"/></router-link>
           </div>

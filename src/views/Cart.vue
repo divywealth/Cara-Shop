@@ -20,23 +20,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(cart, index) in $store.state.Carts" :key="index">
+          <tr v-for="(cart, index) in cart" :key="index">
             <td>
               <font-awesome-icon
                 icon="fa-solid fa-times-circle"
                 class="Cancel"
-                @click="$store.commit('CancelFromCart', index)"
+                @click="removeUsersProduct(cart.id)"
               />
             </td>
             <td>
               <img
-                :src="require(`../assets/Img/${cart.img}`)"
+                :src="cart.product.img"
                 alt=""
                 class="Img"
               />
             </td>
-            <td>{{ cart.Name }}</td>
-            <td>{{ cart.price }}</td>
+            <td>{{ cart.product.name }}</td>
+            <td>{{ cart.product.price * cart.quantity }}</td>
             <td>{{ cart.quantity }}</td>
             <td>{{ cart.size }}</td>
           </tr>
@@ -51,15 +51,15 @@
           <tbody>
             <tr>
               <td>Cart Totals</td>
-              <td>{{ $store.getters.cartTotals }}</td>
+              <td>${{ price }}</td>
             </tr>
             <tr>
               <td>Shipping Fee</td>
-              <td>{{ $store.getters.shippingFee }}</td>
+              <td>${{ shippingFee }}</td>
             </tr>
             <tr>
               <td>Totals</td>
-              <td>{{ $store.getters.totals}}</td>
+              <td>${{ price + shippingFee}}</td>
             </tr>
           </tbody>
         </table>
@@ -76,12 +76,58 @@
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
+import { mapState } from "vuex";
 export default {
   name: "Cart",
   components: { Nav, Footer, IntroBanner },
-  mounted() {
-      
+  data() {
+    return {
+      cart: null,
+      totals: null,
+      price: 0,
+      shippingFee: 0
     }
+  },
+  beforeMount() {
+    this.getUsersProduct();
+  },
+  methods: {
+    async getUsersProduct() {
+      try {
+        const response = await this.$store.dispatch('getCart');
+        this.cart = response;
+        const price = this.cart.map((price) => {
+          return price.product.price * price.quantity
+        })
+        this.totals = price;
+        for (let i = 0; i < this.totals.length; i++) {
+          this.price += this.totals[i];
+        }
+        if(this.cart.length >= 1 && this.cart.length <= 4) {
+          this.shippingFee = 50
+        } else if( this.cart.length > 4) {
+          this.shippingFee = 100
+        }else {
+          this.shippingFee = 0
+        }
+        console.log(this.totals)
+      } catch (error) {
+        throw error;
+      }
+
+    },
+    async removeUsersProduct(id) {
+      try {
+        const response = await this.$store.dispatch('removeUserProduct', id)
+        this.getUsersProduct()
+      } catch (error) {
+        throw error;
+      }
+    },
+  },
+  computed: {
+
+  }
 };
 </script>
 

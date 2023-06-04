@@ -1,12 +1,12 @@
 <template>
     <div>
-        rgtytjyj
+       Address page
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Profile'
+    name: 'Address'
 }
 </script>
 

@@ -47,9 +47,9 @@ const routes = [
     meta: {noAuth: true}
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import('../views/Profile.vue'),
+    path: '/address',
+    name: 'Address',
+    component: () => import('../views/Address.vue'),
     metha: {needsAuth: true}
   },
   {
