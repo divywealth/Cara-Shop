@@ -83,6 +83,10 @@ export default {
       } catch (error) {
         throw error
       }
+    },
+    async JUST_TRY() {
+      const response = await this.$store.commit('JUST_TRY');
+      console.log(response)
     }
   },
   computed: {

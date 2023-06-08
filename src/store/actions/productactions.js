@@ -1,4 +1,4 @@
-import {getProducts, addProduct, getCart, removeUserProduct} from '@/apis/productApis'
+import {getProducts, addProduct, getCart, removeUserProduct, addToCart} from '@/apis/productApis'
 
 export const productActions = {
      async handleGetProduct({commit}) {
@@ -32,6 +32,16 @@ export const productActions = {
          try {
             const response = await removeUserProduct(payload)
             return response
+         } catch (error) {
+             throw error
+         }
+    },
+
+    async placeOrder({commit}, payload) {
+         try {
+             const response = await addToCart(payload);
+             commit('SET_ORDER_PRODUCT', response)
+             return response;
          } catch (error) {
              throw error
          }

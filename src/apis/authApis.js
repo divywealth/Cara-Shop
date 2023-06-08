@@ -8,7 +8,6 @@ export const registerApi = async (data) => {
     } catch (error) {
         throw error.response.data.message
     }
-        
 }
 
 

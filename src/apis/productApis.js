@@ -1,6 +1,5 @@
 import { BASIC_HTTP, BEARER_HTTP } from "./axiosClient";
 import store from '../store/index.js'
-import { Store } from "vuex";
 
 export const getProducts = async () => {
     try {
@@ -11,9 +10,10 @@ export const getProducts = async () => {
     }
 }
 
+
 export const addProduct = async (data) => {
     try {
-        const response = await BEARER_HTTP.post('v1/userproduct', data)
+        const response = await BEARER_HTTP.post('v1/userproduct', data,)
         return response.data;
     } catch (error) {
         throw error.response.data
@@ -38,9 +38,10 @@ export const removeUserProduct = async (id) => {
     }
 }
 
-export const addToCart = async () => {
+export const addToCart = async (data) => {
     try {
-        const response = await BEARER_HTTP.post('v1/order')
+        const response = await BEARER_HTTP.post('v1/order', data);
+        return response.data;
     } catch (error) {
         throw error.response.data
     }

@@ -1,4 +1,4 @@
-import {registerApi, loginApi} from '@/apis/authApis'
+import {registerApi, loginApi} from '@/apis/authApis';
 
 
 export const userActions = {

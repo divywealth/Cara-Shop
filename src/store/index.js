@@ -5,7 +5,7 @@ import { productActions } from './actions/productactions';
 import { authMutations } from './mutations/authmutations';
 import createPersistedState from "vuex-persistedstate";
 import VueJwtDecode from 'vue-jwt-decode'
-import { format } from 'date-fns';
+import {format, isBefore, isAfter, parseISO} from 'date-fns';
 
 
 Vue.use(Vuex)
@@ -14,31 +14,15 @@ export default new Vuex.Store({
   state: {
     user: null,
     token: null,
+    orderProducts: null,
     section1: true,
     section2: false,
     singleProduct: null,
     showCompleteNumbers: false,
     products: {},
-    shippingFee: 0,
-    cartTotals: 0,
-    registrationPasswordError: '',
-    registrationConfirmPasswordError: '',
-    loginPhoneNoError: '',
-    loginPasswordError: '',
   },
 
-  getters: {
-    shippingFee(state) {
-      if (state.cartTotals >= 1) {
-        state.shippingFee = 200
-      }
-      return state.shippingFee
-    },
-    totals(state) {
-      return state.cartTotals + state.shippingFee
-    }
-
-  },
+  getters: {},
 
   mutations: {
     SET_USER(state, payload) {
@@ -51,14 +35,23 @@ export default new Vuex.Store({
       Vue.set(state, 'products', payload)
     },
     AUTO_LOGOUT(state) {
-      const decodedToken = VueJwtDecode.decode(state.token)
-      const exp = decodedToken.exp
-      const tokenExpDate = format(new Date(exp * 1000), 'yyy-MM-dd-hh-mm-ss');
-      const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
-      if (currentDate > tokenExpDate) {
-        Vue.set(state, 'user', null)
-        Vue.set(state, 'token', null)
+      if (state.token != null) {
+        const decodedToken = VueJwtDecode.decode(state.token)
+        const exp = decodedToken.exp
+        const tokenExpDate = format(new Date(exp * 1000), 'yyy-MM-dd-hh-mm-ss');
+        console.log(tokenExpDate);
+        const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
+        if (isAfter(parseISO(currentDate), parseISO(tokenExpDate))) {
+          Vue.set(state, 'user', null)
+          Vue.set(state, 'token', null)
+        }
       }
+    },
+    JUST_TRY(state) {
+      return 'state.token'
+    },
+    SET_ORDER_PRODUCT(state, payload) {
+      Vue.set(state, 'orderProducts', payload)
     },
     showSection2(state) {
       state.section1 = false
@@ -99,3 +92,5 @@ export default new Vuex.Store({
     })
   ]
 })
+
+

@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import {SET_BEARER_HTTP} from "@/apis/axiosClient";
+
 export default {
     name: "SignIn",
     data() {
@@ -50,10 +52,12 @@ export default {
                     phoneNo: this.phoneNo, 
                     password: this.password,
                 })
+              console.log(response)
                 if (response){
                     await this.$router.push({
                         name: 'home'
                     })
+                  SET_BEARER_HTTP()
                 }
             } catch (error) {
                 this.errors.phoneNo = null

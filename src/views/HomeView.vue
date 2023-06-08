@@ -9,7 +9,7 @@
         <h2>Super value deals</h2>
         <h1>On all products</h1>
         <p>Save more with coupons & up to 70% off!</p>
-        <button>Shop Now</button>
+        <button @click="GOTOSHOP">Shop Now</button>
       </div>
     </div>
     <!--feature-->
@@ -120,7 +120,7 @@
 
     <Signup v-if="!user" />
     <!--Footer-->
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -144,6 +144,7 @@ export default {
   },
   mounted() {
     this.$store.commit("AUTO_LOGOUT");
+    console.log(localStorage.getItem('showCompleteNumbers'));
     this.GET_NEW_PRODUCT_ARRIVAL();
     this.GET_FEATURED_PRODUCT();
   },
@@ -160,6 +161,11 @@ export default {
       const filtered =  this.products.filter((product) => product.price == 60)
       this.featuredproducts = filtered
     },
+    GOTOSHOP() {
+      this.$router.push({
+        name: "shop"
+      })
+    }
   },
   computed: {
     ...mapState(["user", "products"]),

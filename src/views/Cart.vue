@@ -45,7 +45,32 @@
     </section>
 
     <section id="cartTotals">
-      <div>
+      <div id="firstSide">
+        <h2>ADDRESS DETAILS</h2>
+        <form>
+          <div class="headerForm">
+            <div class="childForm">
+              <label>Street</label>
+              <input type="text" v-model="street" required/>
+            </div>
+            <div class="childForm">
+              <label>City</label>
+              <input type="text" v-model="city" required/>
+            </div>
+          </div>
+          <div class="headerForm">
+            <div class="childForm">
+              <label>Country</label>
+              <input type="text" v-model="country" required/>
+            </div>
+            <div class="childForm">
+              <label>Recievers Phone No</label>
+              <input type="text" v-model="recieversPhoneNo" required/>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="secondSide">
         <h2>Cart Tools</h2>
         <table width="100%">
           <tbody>
@@ -64,7 +89,7 @@
           </tbody>
         </table>
 
-        <button>Place order</button>
+        <button @click="placeOrder">Place order</button>
       </div>
     </section>
 
@@ -76,12 +101,15 @@
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
-import { mapState } from "vuex";
 export default {
   name: "Cart",
   components: { Nav, Footer, IntroBanner },
   data() {
     return {
+      street: '',
+      city: '',
+      country: '',
+      recieversPhoneNo: '',
       cart: null,
       totals: null,
       price: 0,
@@ -110,7 +138,6 @@ export default {
         }else {
           this.shippingFee = 0
         }
-        console.log(this.totals)
       } catch (error) {
         throw error;
       }
@@ -124,9 +151,26 @@ export default {
         throw error;
       }
     },
-  },
-  computed: {
-
+    async placeOrder() {
+      try {
+        const address = {
+          street: this.street,
+          city: this.city,
+          country: this.country,
+          phoneNo: this.recieversPhoneNo,
+        }
+        if (this.street !== null && this.city !== null && this.country !== null && this.recieversPhoneNo !== null) {
+          const response = await this.$store.dispatch("placeOrder", {address});
+          if (response) {
+            await this.$router.push({
+              name: 'Checkout',
+            })
+          }
+        }
+      } catch (error) {
+        throw error;
+      }
+    },
   }
 };
 </script>
@@ -199,24 +243,46 @@ export default {
 #cartTotals {
   margin: 40px 40px;
   display: flex;
-  justify-content: end;
 }
-#cartTotals div {
+#firstSide {
   width: 50%;
+  padding: 20px 35px;
+  border-radius: 10px;
+  border: 1px solid #d5dad4;
+  margin-right: 10%;
+}
+#firstSide h2 {
+  font-family: system-ui;
+}
+#firstSide form input {
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 0px 2px 0px;
+  width: 100%;
+}
+#firstSide form label {
+  width: 50%;
+  margin: 20px 0 10px 0;
+  display: block;
+  white-space: nowrap;
+}
+#secondSide {
+  width: 40%;
   padding: 20px 35px;
   border: 1px solid #d5dad4;
 }
-#cartTotals div table {
+#secondSide table {
   margin: 10px 0;
   border-collapse: collapse;
 }
-#cartTotals div table tbody td {
+#secondSide table tbody td {
   border: 1px solid #d6dbd5;
   padding: 10px 5px;
   font-family: sans-serif;
   color: #606063;
 }
-#cartTotals div button {
+#secondSide button {
   padding: 12px 15px;
   background: #088178;
   border: none;
@@ -224,8 +290,15 @@ export default {
   color: white;
   cursor: pointer;
 }
-#cartTotals div h2 {
+#secondSide h2 {
   font-family: sans-serif;
+}
+.headerForm {
+  display: flex;
+}
+.childForm {
+  flex: 1;
+  margin-right: 20px;
 }
 
 @media only screen and (max-width: 860px) {
@@ -235,8 +308,18 @@ export default {
   #productBanner2 h2 {
     font-size: 40px;
   }
-  #cartTotals div {
-    width: 100%;
+  #cartTotals {
+    margin: 40px 40px;
+    display: block;
+  }
+  #firstSide {
+    width: 90%;
+    padding: 10px 20px;
+    margin-right: 0%;
+    margin-bottom: 20px;
+  }
+  #secondSide {
+    width: 90%;
     padding: 10px 20px;
     border: 1px solid #d5dad4;
   }
