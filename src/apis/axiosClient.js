@@ -18,6 +18,5 @@ export const SET_BEARER_HTTP = () => {
     baseURL: 'http://44.211.220.175/',
     timeout: 10000,
     headers: {'Authorization': `Bearer ${store.state.token}`}
-  });
-  return BEARER
+    });
 }

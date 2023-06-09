@@ -100,10 +100,6 @@ export default {
       }
     },
   },
-  updated() {
-    //this.product.size = this.size
-    //this.product.quantity = this.quantity
-  },
   computed: {
     ...mapState(["user", "products"]),
   },

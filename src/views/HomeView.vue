@@ -133,6 +133,7 @@ import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
 import { mapState } from "vuex";
 import { format } from "date-fns";
+import {SET_BEARER_HTTP} from "@/apis/axiosClient";
 export default {
   name: "home",
   components: { Nav, Feature, Product, Footer, Signup },
@@ -143,8 +144,8 @@ export default {
     };
   },
   mounted() {
+    SET_BEARER_HTTP();
     this.$store.commit("AUTO_LOGOUT");
-    console.log(localStorage.getItem('showCompleteNumbers'));
     this.GET_NEW_PRODUCT_ARRIVAL();
     this.GET_FEATURED_PRODUCT();
   },
