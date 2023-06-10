@@ -39,7 +39,9 @@ export default new Vuex.Store({
         const decodedToken = VueJwtDecode.decode(state.token);
         const exp = decodedToken.exp;
         const tokenExpDate = format(new Date(exp * 1000), 'yyy-MM-dd-hh-mm-ss');
+        console.log(`this is tokenDate ${tokenExpDate}`)
         const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
+        console.log(`this is currentDate ${currentDate}`)
         const isTokenExpired = isAfter(parseISO(currentDate), parseISO(tokenExpDate));
         console.log(isTokenExpired);
         if(isTokenExpired === true) {

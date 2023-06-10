@@ -51,7 +51,7 @@
               <span v-if="!user" @click="goToSignIn" ><router-link to="#">Sign In</router-link></span>
               <span v-if="user" @click="handleLogOut"><router-link to="#">Sign Out</router-link></span>
             </li>
-            <li><router-link to="/home">Home</router-link></li>
+            <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/shop">Shop</router-link></li>
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
