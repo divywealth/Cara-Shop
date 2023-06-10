@@ -5,7 +5,7 @@ import { productActions } from './actions/productactions';
 import { authMutations } from './mutations/authmutations';
 import createPersistedState from "vuex-persistedstate";
 import VueJwtDecode from 'vue-jwt-decode'
-import {format, isBefore, isAfter, parseISO} from 'date-fns';
+import {format, isBefore, isAfter, parseISO, parseJSON} from 'date-fns';
 
 
 Vue.use(Vuex)
@@ -38,11 +38,11 @@ export default new Vuex.Store({
       if (state.token != null) {
         const decodedToken = VueJwtDecode.decode(state.token);
         const exp = decodedToken.exp;
-        const tokenExpDate = format(new Date(exp * 1000), 'yyy-MM-dd-hh-mm-ss');
+        const tokenExpDate = new Date(exp * 1000);
         console.log(`this is tokenDate ${tokenExpDate}`)
-        const currentDate = format(new Date, 'yyy-MM-dd-hh-mm-ss');
+        const currentDate = new Date();
         console.log(`this is currentDate ${currentDate}`)
-        const isTokenExpired = isAfter(parseISO(currentDate), parseISO(tokenExpDate));
+        const isTokenExpired = isAfter(currentDate, tokenExpDate);
         console.log(isTokenExpired);
         if(isTokenExpired === true) {
           Vue.set(state, 'user', null);
@@ -60,16 +60,6 @@ export default new Vuex.Store({
     showSection(state) {
       state.section1 = true
       state.section2 = false
-    },
-    AddToCart(state, product) {
-      state.Carts.push(product)
-      console.log(state.Carts)
-    },
-    handleSubmit(state) {
-
-    },
-    CancelFromCart(state, index) {
-      state.Carts.splice(index, 1)
     },
     handleGetProduct(state, payload) {
       console.log(payload)
