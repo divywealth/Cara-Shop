@@ -47,6 +47,21 @@ const routes = [
     meta: {noAuth: true}
   },
   {
+    path: '/forgetpassword',
+    name: 'Get-Verification-Code',
+    component: () => import( '../views/ForgetPassword/Get-Verification-Code.vue')
+  },
+  {
+    path: '/verifycode',
+    name: 'Verify-Code',
+    component: () => import( '../views/ForgetPassword/Verify-Code.vue')
+  },
+  {
+    path: '/changepassword',
+    name: 'Change-Password',
+    component: () => import( '../views/ForgetPassword/Change-Password.vue')
+  },
+  {
     path: '/checkout',
     name: 'Checkout',
     component: () => import('../views/Checkout.vue'),

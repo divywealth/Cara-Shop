@@ -1,4 +1,4 @@
-import {registerApi, loginApi} from '@/apis/authApis';
+import {registerApi, loginApi, verifyCodeApi, resetPasswordApi, forgetPasswordApi} from '@/apis/authApis';
 
 
 export const userActions = {
@@ -23,5 +23,38 @@ export const userActions = {
         throw error
       }
     },
+    async handleForgetPassword({commit, state}) {
+        try {
+          const response = await forgetPasswordApi(state.email)
+          return response
+        } catch (e) {
+
+        }
+    },
+    async handleverifyCode({commit, state}) {
+        try {
+            const newdata = {
+                email: state.email,
+                verificationCode: state.verificationCode
+            }
+            const response = await verifyCodeApi(newdata)
+            return response
+        } catch (e) {
+
+        }
+    },
+    async handleResetPassword({commit, state}, data) {
+        try {
+            const newdata = {
+                email: state.data,
+                verificationCode: state.verificationCode,
+                password: data
+            }
+            const response = await resetPasswordApi(newdata)
+            return response
+        } catch (e) {
+
+        }
+    }
 
 }

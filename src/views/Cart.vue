@@ -48,6 +48,7 @@
       <div id="firstSide">
         <h2>ADDRESS DETAILS</h2>
         <form>
+          <div class="fillAddressError" v-if="error">Fill in your address for delivery</div>
           <div class="headerForm">
             <div class="childForm">
               <label>Street</label>
@@ -71,6 +72,7 @@
         </form>
       </div>
       <div id="secondSide">
+        <div class="fillAddressError" v-if="emptyCartError">Cart is empty</div>
         <h2>Cart Tools</h2>
         <table width="100%">
           <tbody>
@@ -89,7 +91,7 @@
           </tbody>
         </table>
 
-        <button @click="placeOrder">Place order</button>
+        <button @click="placeOrder" type="button">Place order</button>
       </div>
     </section>
 
@@ -113,11 +115,14 @@ export default {
       cart: null,
       totals: null,
       price: 0,
-      shippingFee: 0
+      shippingFee: 0,
+      error: false,
+      emptyCartError: false,
     }
   },
   beforeMount() {
     this.getUsersProduct();
+    console.log(this.street, this.city,this.country, this.recieversPhoneNo)
   },
   methods: {
     async getUsersProduct() {
@@ -154,18 +159,28 @@ export default {
     async placeOrder() {
       try {
         const address = {
-          street: this.street,
-          city: this.city,
-          country: this.country,
-          phoneNo: this.recieversPhoneNo,
+
         }
-        if (this.street !== null && this.city !== null && this.country !== null && this.recieversPhoneNo !== null) {
-          const response = await this.$store.dispatch("placeOrder", {address});
-          if (response) {
-            await this.$router.push({
-              name: 'Checkout',
-            })
+        this.error = false;
+        this.emptyCartError = false;
+        if (this.cart) {
+          if (this.street === '' && this.city === '' && this.country === '' && this.recieversPhoneNo === '') {
+            this.error = !this.error;
+          } else {
+              const response = await this.$store.dispatch("placeOrder", {
+                street: this.street,
+                city: this.city,
+                country: this.country,
+                phoneNo: this.recieversPhoneNo,
+              });
+              if (response) {
+                await this.$router.push({
+                  name: 'Checkout',
+                })
+              }
           }
+        } else {
+          this.emptyCartError = !this.emptyCartError
         }
       } catch (error) {
         throw error;
@@ -299,6 +314,13 @@ export default {
 .childForm {
   flex: 1;
   margin-right: 20px;
+}
+.fillAddressError {
+  color: #ff0062;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: sans-serif;
 }
 
 @media only screen and (max-width: 860px) {

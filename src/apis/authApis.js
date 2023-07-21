@@ -20,3 +20,27 @@ export const loginApi = async (data) => {
     }
     
 }
+
+export const forgetPasswordApi = async (data) => {
+    try {
+        let response = await BASIC_HTTP.post('/v1/user/forgetpassword', data)
+    } catch (error) {
+        throw error.response.data.message
+    }
+}
+
+export const verifyCodeApi = async (data) => {
+    try {
+        let response = await BASIC_HTTP.post('/v1/user/verifycode', data)
+    } catch (error) {
+        throw error.response.data.message
+    }
+}
+
+export const resetPasswordApi = async (data) => {
+    try {
+        let response = await BASIC_HTTP.post('/v1/user/verifycode', data)
+    } catch (error) {
+        throw error.response.data.message
+    }
+}

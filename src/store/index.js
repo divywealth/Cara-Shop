@@ -20,6 +20,8 @@ export default new Vuex.Store({
     singleProduct: null,
     showCompleteNumbers: false,
     products: {},
+    email: '',
+    verificationCode: ''
   },
 
   getters: {},
