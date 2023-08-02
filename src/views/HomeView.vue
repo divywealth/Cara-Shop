@@ -145,11 +145,20 @@ export default {
   },
   mounted() {
     SET_BEARER_HTTP();
+    GET_PRODUCTS();
     this.$store.commit("AUTO_LOGOUT");
     this.GET_NEW_PRODUCT_ARRIVAL();
     this.GET_FEATURED_PRODUCT();
   },
   methods: {
+    async GET_PRODUCTS() {
+      try {
+        const response = this.$store.dispatch('handleGetProduct')
+        return response
+      } catch (error) {
+        throw error
+      }
+    },
     GET_NEW_PRODUCT_ARRIVAL() {
       const currentDate = format(
         new Date,
