@@ -145,7 +145,7 @@ export default {
   },
   mounted() {
     SET_BEARER_HTTP();
-    GET_PRODUCTS();
+    this.GET_PRODUCTS();
     this.$store.commit("AUTO_LOGOUT");
     this.GET_NEW_PRODUCT_ARRIVAL();
     this.GET_FEATURED_PRODUCT();
