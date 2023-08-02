@@ -400,6 +400,9 @@ export default {
   .productBanner h2 {
     font-size: 45px;
   }
+  .productSpace {
+    margin: 5px;
+  }
 }
 
 @media only screen and (max-width: 390px) {
