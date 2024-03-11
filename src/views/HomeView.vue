@@ -179,7 +179,7 @@ export default {
   },
   computed: {
     ...mapState(["user", "products"]),
-  },
+  },    
 };
 </script>
 

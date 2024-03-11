@@ -65,7 +65,7 @@ export default {
   components: { Nav, Footer, Signup },
   data() {
     return {
-      product: null,
+      product: {},
       size: "",
       quantity: "1",
       addedToCart: false,
@@ -74,18 +74,19 @@ export default {
   mounted() {
     const params = this.$route.params.id;
     this.product = this.products.find(
-      (singleProduct) => singleProduct.id == params
+      (singleProduct) => singleProduct._id == params
     );
   },
   methods: {
     async AddToCart() {
       try {
+        console.log(this.token)
         if (this.size == "") {
           return;
         }
         const quantity = parseInt(this.quantity);
         const response = await this.$store.dispatch("handleAddToCart", {
-          productId: this.product.id,
+          productId: this.product._id,
           size: this.size,
           quantity: quantity,
         });
@@ -101,7 +102,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["user", "products"]),
+    ...mapState(["user", "products", "token"]),
   },
 };
 </script>

@@ -39,7 +39,7 @@ export default {
       this.$router.push({
         name: "SingleProduct",
         params: {
-          id: this.product.id,
+          id: this.product._id,
         },
       });
     },

@@ -25,7 +25,7 @@
               <font-awesome-icon
                 icon="fa-solid fa-times-circle"
                 class="Cancel"
-                @click="removeUsersProduct(cart.id)"
+                @click="removeUsersProduct(cart._id)"
               />
             </td>
             <td>
@@ -122,27 +122,14 @@ export default {
   },
   beforeMount() {
     this.getUsersProduct();
-    console.log(this.street, this.city,this.country, this.recieversPhoneNo)
+    //console.log(cart._id)
   },
   methods: {
     async getUsersProduct() {
       try {
         const response = await this.$store.dispatch('getCart');
-        this.cart = response;
-        const price = this.cart.map((price) => {
-          return price.product.price * price.quantity
-        })
-        this.totals = price;
-        for (let i = 0; i < this.totals.length; i++) {
-          this.price += this.totals[i];
-        }
-        if(this.cart.length >= 1 && this.cart.length <= 4) {
-          this.shippingFee = 50
-        } else if( this.cart.length > 4) {
-          this.shippingFee = 100
-        }else {
-          this.shippingFee = 0
-        }
+        console.log(response)
+        
       } catch (error) {
         throw error;
       }

@@ -22,6 +22,7 @@ export const productActions = {
     async getCart({commit}) {
          try {
              const response = await getCart()
+             console.log(response)
              return response
          } catch (error) {
              throw error

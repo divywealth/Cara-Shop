@@ -13,7 +13,7 @@ export const registerApi = async (data) => {
 
 export const loginApi = async (data) => {
     try {
-        let response = await BASIC_HTTP.post('v1/user/login', data);
+        let response = await BASIC_HTTP.post('v1/signin', data);
         return response.data;
     } catch (error) {
         throw error.response.data.message;
@@ -23,7 +23,7 @@ export const loginApi = async (data) => {
 
 export const forgetPasswordApi = async (data) => {
     try {
-        let response = await BASIC_HTTP.post('/v1/user/forgetpassword', data)
+        let response = await BASIC_HTTP.post('/v1/forgetpassword', data)
     } catch (error) {
         throw error.response.data.message
     }
@@ -31,7 +31,7 @@ export const forgetPasswordApi = async (data) => {
 
 export const verifyCodeApi = async (data) => {
     try {
-        let response = await BASIC_HTTP.post('/v1/user/verifycode', data)
+        let response = await BASIC_HTTP.post('/v1/verifypasscode', data)
     } catch (error) {
         throw error.response.data.message
     }
@@ -39,7 +39,7 @@ export const verifyCodeApi = async (data) => {
 
 export const resetPasswordApi = async (data) => {
     try {
-        let response = await BASIC_HTTP.post('/v1/user/verifycode', data)
+        let response = await BASIC_HTTP.post('/v1/reset-password', data)
     } catch (error) {
         throw error.response.data.message
     }
