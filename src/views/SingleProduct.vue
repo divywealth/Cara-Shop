@@ -31,8 +31,8 @@
           <select v-model="size" required>
             <option value="XL">XL</option>
             <option value="XXL">XXL</option>
-            <option value="Small">Small</option>
-            <option value="Large">Large</option>
+            <option value="SMALL">SMALL</option>
+            <option value="LARGE">LARGE</option>
           </select>
           <div>
             <input type="number" value="1" v-model="quantity" required />
@@ -60,6 +60,7 @@ import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
 import { mapState } from "vuex";
+import {SET_BEARER_HTTP} from "@/apis/axiosClient"
 export default {
   name: "SingleProduct",
   components: { Nav, Footer, Signup },
@@ -80,7 +81,7 @@ export default {
   methods: {
     async AddToCart() {
       try {
-        console.log(this.token)
+        SET_BEARER_HTTP();
         if (this.size == "") {
           return;
         }

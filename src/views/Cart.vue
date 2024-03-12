@@ -103,6 +103,7 @@
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
+import {SET_BEARER_HTTP} from "@/apis/axiosClient"
 export default {
   name: "Cart",
   components: { Nav, Footer, IntroBanner },
@@ -127,6 +128,7 @@ export default {
   methods: {
     async getUsersProduct() {
       try {
+        SET_BEARER_HTTP();
         const response = await this.$store.dispatch('getCart');
         console.log(response)
         
