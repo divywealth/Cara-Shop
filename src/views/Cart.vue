@@ -122,16 +122,23 @@ export default {
     }
   },
   beforeMount() {
+    SET_BEARER_HTTP();
     this.getUsersProduct();
     //console.log(cart._id)
   },
   methods: {
     async getUsersProduct() {
       try {
-        SET_BEARER_HTTP();
         const response = await this.$store.dispatch('getCart');
         console.log(response)
-        
+        this.cart = response
+        this.price = this.cart.reduce((acc,ini) => {
+          acc + ini
+        }, 0)
+        consoe.log(this.price)
+        for ( let i = 0; i < this.cart.length; i++) {
+          console.log(this.cart[i].product.price)
+        }
       } catch (error) {
         throw error;
       }
