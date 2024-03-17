@@ -109,10 +109,10 @@ export default {
   components: { Nav, Footer, IntroBanner },
   data() {
     return {
-      street: '',
-      city: '',
-      country: '',
-      recieversPhoneNo: '',
+      street: "",
+      city: "",
+      country: "",
+      recieversPhoneNo: "",
       cart: null,
       totals: null,
       price: 0,
@@ -132,12 +132,15 @@ export default {
         const response = await this.$store.dispatch('getCart');
         console.log(response)
         this.cart = response
-        this.price = this.cart.reduce((acc,ini) => {
-          acc + ini
+        this.price = this.cart.reduce((acc, init) => {
+          return acc + init.product.price
         }, 0)
-        consoe.log(this.price)
-        for ( let i = 0; i < this.cart.length; i++) {
-          console.log(this.cart[i].product.price)
+        if(this.cart.length >= 1) {
+          this.shippingFee = 50
+        } else if( this.cart.length > 4) {
+          this.shippingFee = 100
+        }else {
+          this.shippingFee = 0
         }
       } catch (error) {
         throw error;
@@ -154,8 +157,12 @@ export default {
     },
     async placeOrder() {
       try {
+        SET_BEARER_HTTP();
         const address = {
-
+          street: this.street,
+          city: this.city,
+          country: this.country,
+          phoneNo: this.recieversPhoneNo,
         }
         this.error = false;
         this.emptyCartError = false;
@@ -163,12 +170,8 @@ export default {
           if (this.street === '' && this.city === '' && this.country === '' && this.recieversPhoneNo === '') {
             this.error = !this.error;
           } else {
-              const response = await this.$store.dispatch("placeOrder", {
-                street: this.street,
-                city: this.city,
-                country: this.country,
-                phoneNo: this.recieversPhoneNo,
-              });
+              const response = await this.$store.dispatch("placeOrder", {address});
+              console.log(response)
               if (response) {
                 await this.$router.push({
                   name: 'Checkout',

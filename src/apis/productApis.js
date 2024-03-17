@@ -13,6 +13,7 @@ export const getProducts = async () => {
 
 export const addProduct = async (data) => {
     try {
+        console.log(data)
         const response = await BEARER_HTTP.post('v1/userproduct', data,)
         return response.data;
     } catch (error) {
@@ -39,9 +40,10 @@ export const removeUserProduct = async (id) => {
     }
 }
 
-export const addToCart = async (data) => {
+export const addToCart = async (address) => {
     try {
-        const response = await BEARER_HTTP.post('v1/order', data);
+        console.log(address)
+        const response = await BEARER_HTTP.post('v1/order', address,);
         return response.data;
     } catch (error) {
         throw error.response.data

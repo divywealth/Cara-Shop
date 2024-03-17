@@ -30,7 +30,7 @@ export default {
     }
   },
   mounted() {
-    this.getUsersProduct()
+    //this.getUsersProduct()
     console.log(this.orderProducts)
   },
   methods: {
