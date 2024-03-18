@@ -36,7 +36,10 @@
           </select>
           <div>
             <input type="number" value="1" v-model="quantity" required />
-            <button class="fontStyle">Add To Cart</button>
+            <button class="fontStyle">
+              
+              Add To Cart
+            </button>
           </div>
         </form>
         <h4 class="fontStyle">Product Details</h4>

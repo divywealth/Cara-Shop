@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Loading v-if="loading" />
+    <!--This is the loader doesnt display unless fetching a data-->
     <Nav />
 
     <IntroBanner>
@@ -100,15 +102,17 @@
 </template>
 
 <script>
+import Loading from "../components/Loading.vue"
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
 import {SET_BEARER_HTTP} from "@/apis/axiosClient"
 export default {
   name: "Cart",
-  components: { Nav, Footer, IntroBanner },
+  components: { Nav, Footer, IntroBanner, Loading},
   data() {
     return {
+      loading: false,
       street: "",
       city: "",
       country: "",
@@ -170,9 +174,11 @@ export default {
           if (this.street === '' && this.city === '' && this.country === '' && this.recieversPhoneNo === '') {
             this.error = !this.error;
           } else {
+              this.loading = true;
               const response = await this.$store.dispatch("placeOrder", {address});
               console.log(response)
               if (response) {
+                this.loading = false;
                 await this.$router.push({
                   name: 'Checkout',
                 })
