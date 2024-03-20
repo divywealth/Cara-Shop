@@ -45,7 +45,9 @@ export default {
     },
     methods: {
       async handleLogOut() {
+        this.$emit("update_loading")
         await this.$store.commit('handleLogOut')
+        this.$emit("update_loading")
       }
     }
 }

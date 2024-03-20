@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!--This is the loader doesnt display unless fetching a data-->
+    <Loading v-if="loading"/>
     <!--NavigationToolBar-->
     <Nav />
     <!--Body-->
@@ -120,7 +122,7 @@
 
     <Signup v-if="!user" />
     <!--Footer-->
-    <Footer/>
+    <Footer @update_loading="change_loading"/>
   </div>
 </template>
 
@@ -177,6 +179,9 @@ export default {
       this.$router.push({
         name: "shop"
       })
+    },
+    change_loading() {
+      this.loading = !this.loading;
     }
   },
   computed: {
