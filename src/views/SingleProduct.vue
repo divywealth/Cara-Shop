@@ -37,8 +37,8 @@
           <div>
             <input type="number" value="1" v-model="quantity" required />
             <button class="fontStyle">
-              
-              Add To Cart
+              <div class="spinner" v-if="loading"></div>
+              <l v-if="!loading">Add To Cart</l>
             </button>
           </div>
         </form>
@@ -69,6 +69,7 @@ export default {
   components: { Nav, Footer, Signup },
   data() {
     return {
+      loading: false,
       product: {},
       size: "",
       quantity: "1",
@@ -89,11 +90,13 @@ export default {
           return;
         }
         const quantity = parseInt(this.quantity);
+        this.loading = true
         const response = await this.$store.dispatch("handleAddToCart", {
           productId: this.product._id,
           size: this.size,
           quantity: quantity,
         });
+        this.loading = false
         if (response != null) {
           this.addedToCart = !this.addedToCart;
           setTimeout(() => {
@@ -202,6 +205,18 @@ export default {
   padding: 15px 20px 15px 20px;
   font-family: sans-serif;
   font-size: 18px;
+}
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #283D3F;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 @media only screen and (max-width: 860px) {
   .firstSection {

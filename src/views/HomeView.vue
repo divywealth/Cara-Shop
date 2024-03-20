@@ -127,6 +127,7 @@
 <script>
 // @ is an alias to /src
 import Nav from "../components/Nav.vue";
+import Loading from "../components/Loading.vue"
 import Feature from "../components/Feature.vue";
 import Product from "../components/Product.vue";
 import Footer from "../components/Footer.vue";
@@ -136,9 +137,10 @@ import { format } from "date-fns";
 import {SET_BEARER_HTTP} from "@/apis/axiosClient";
 export default {
   name: "home",
-  components: { Nav, Feature, Product, Footer, Signup },
+  components: { Nav, Feature, Product, Footer, Signup, Loading },
   data() {
     return {
+      loading: false,
       featuredproducts: {},
       newArrival: {},
     };
