@@ -48,7 +48,7 @@ export const productActions = {
   async placeOrder({ commit }, payload) {
     try {
       const response = await addToCart(payload);
-      console.log(response)
+      console.log(response);
       commit("SET_ORDER_PRODUCT", response);
       return response;
     } catch (error) {

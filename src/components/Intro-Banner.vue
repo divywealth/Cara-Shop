@@ -1,6 +1,6 @@
 <template>
   <div id="productBanner2">
-      <slot></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style scoped>
-
 #productBanner2 {
   text-align: center;
   padding: 20px 0;
@@ -32,5 +31,4 @@ export default {
     align-items: center;
   }
 }
-
 </style>

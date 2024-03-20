@@ -1,8 +1,8 @@
 <template>
   <div id="signIn">
     <!--This is the loader doesnt display unless fetching a data-->
-    <Loading v-if="loading"/>
-    
+    <Loading v-if="loading" />
+
     <h1>Welcome Back</h1>
     <p>Please enter your details</p>
     <form @submit.prevent="handleLogin">

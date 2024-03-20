@@ -1,12 +1,12 @@
 <template>
   <div>
-      <section id="signUpBanner">
+    <section id="signUpBanner">
       <div class="signUpText">
         <h4>Sign Up For Updates</h4>
         <p>Get Email updates about our <span>special offers.</span></p>
       </div>
       <div class="signUpForm">
-        <input type="text" placeholder="Your email address">
+        <input type="text" placeholder="Your email address" />
         <button>Sign Up</button>
       </div>
     </section>
@@ -15,12 +15,11 @@
 
 <script>
 export default {
-    name: "Signup"
-}
+  name: "Signup",
+};
 </script>
 
 <style>
-
 #signUpBanner {
   background: rgb(15, 15, 99);
   display: flex;
@@ -30,7 +29,6 @@ export default {
   padding: 35px 100px;
 }
 .signUpText {
-
 }
 .signUpText h4 {
   color: white;
@@ -42,7 +40,7 @@ export default {
   font-size: 14px;
   line-height: 3;
   font-weight: 600;
-  color:#818ea0 ;
+  color: #818ea0;
   font-family: sans-serif;
 }
 .signUpText p span {
@@ -51,16 +49,16 @@ export default {
 .signUpForm {
   color: white;
   display: flex;
-  width: 50%
+  width: 50%;
 }
 .signUpForm input {
-  border: none; 
+  border: none;
   height: 50px;
   padding: 0 18px;
   font-size: 15px;
   border-radius: 4px 0 0 4px;
   width: 100%;
-  outline: none
+  outline: none;
 }
 .signUpForm button {
   height: 50px;
@@ -75,14 +73,13 @@ export default {
 }
 
 @media only screen and (max-width: 860px) {
-    
   .signUpForm {
-    width: 100%
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 500px) {
-    #signUpBanner {
+  #signUpBanner {
     padding: 35px 30px;
   }
 }

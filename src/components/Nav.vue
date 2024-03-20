@@ -16,7 +16,8 @@
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
             <li v-if="user" id="greetings">
-              <font-awesome-icon icon="fa-solid fa-user-check" /> <span> Hi, {{user.firstName}}</span>
+              <font-awesome-icon icon="fa-solid fa-user-check" />
+              <span> Hi, {{ user.firstName }}</span>
             </li>
             <li id="user" v-if="!user">
               <font-awesome-icon icon="fa-solid fa-user" />
@@ -29,7 +30,7 @@
             <li>
               <router-link to="/cart"
                 ><font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                </router-link>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -48,8 +49,12 @@
           <ul>
             <li id="timesSignOut">
               <font-awesome-icon icon="fa-solid fa-times" @click="showMenu" />
-              <span v-if="!user" @click="goToSignIn" ><router-link to="#">Sign In</router-link></span>
-              <span v-if="user" @click="handleLogOut"><router-link to="#">Sign Out</router-link></span>
+              <span v-if="!user" @click="goToSignIn"
+                ><router-link to="#">Sign In</router-link></span
+              >
+              <span v-if="user" @click="handleLogOut"
+                ><router-link to="#">Sign Out</router-link></span
+              >
             </li>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/shop">Shop</router-link></li>
@@ -63,7 +68,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "Nav",
   data() {
@@ -81,13 +86,13 @@ export default {
         name: "SignIn",
       });
     },
-   async handleLogOut() {
-     await this.$store.commit('handleLogOut')
-    }
+    async handleLogOut() {
+      await this.$store.commit("handleLogOut");
+    },
   },
   computed: {
-    ...mapState(['user'])
-  }
+    ...mapState(["user"]),
+  },
 };
 </script>
 
@@ -239,7 +244,7 @@ nav {
 }
 #greetings span {
   margin-left: 4px;
-} 
+}
 
 @media only screen and (max-width: 500px) {
   .navigation ul {

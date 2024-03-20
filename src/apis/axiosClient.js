@@ -6,7 +6,6 @@ export const BASIC_HTTP = axios.create({
   timeout: 10000,
 });
 
-
 export let BEARER_HTTP = axios.create({
   baseURL: "https://carashop-be-mongo.onrender.com/",
   timeout: 10000,
@@ -19,4 +18,3 @@ export const SET_BEARER_HTTP = () => {
     headers: { Authorization: `Bearer ${store.state.token}` },
   });
 };
-  

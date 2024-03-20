@@ -53,7 +53,7 @@
       </div>
     </section>
 
-    <Signup v-if="!$store.state.user"/>
+    <Signup v-if="!$store.state.user" />
 
     <Footer />
   </div>
@@ -65,7 +65,7 @@ import Footer from "../components/Footer.vue";
 import Product from "../components/Product.vue";
 import Signup from "../components/Signup.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
-import {mapState} from 'vuex';
+import { mapState } from "vuex";
 export default {
   name: "Shop",
   components: { Nav, Footer, Product, Signup, IntroBanner },
@@ -73,21 +73,21 @@ export default {
     return {};
   },
   mounted() {
-    this.getProducts()
+    this.getProducts();
   },
   methods: {
     async getProducts() {
       try {
-        const response = this.$store.dispatch('handleGetProduct')
-        return response
+        const response = this.$store.dispatch("handleGetProduct");
+        return response;
       } catch (error) {
-        throw error
+        throw error;
       }
     },
   },
   computed: {
-    ...mapState(['products'])
-  }
+    ...mapState(["products"]),
+  },
 };
 </script>
 

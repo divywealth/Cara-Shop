@@ -51,11 +51,7 @@
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="E-mail" />
           <input type="text" placeholder="Subject" />
-          <textarea
-            cols="30"
-            rows="10"
-            placeholder="Message..."
-          ></textarea>
+          <textarea cols="30" rows="10" placeholder="Message..."></textarea>
           <div id="button"><button>Submit</button></div>
         </form>
       </div>
@@ -80,7 +76,7 @@
       </div>
     </section>
 
-    <Signup v-if="!user"/>
+    <Signup v-if="!user" />
     <Footer />
   </div>
 </template>
@@ -90,13 +86,13 @@ import Nav from "../components/Nav.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
 import Signup from "../components/Signup.vue";
 import Footer from "../components/Footer.vue";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   name: "Contact",
   components: { Nav, IntroBanner, Signup, Footer },
   computed: {
-    ...mapState(['user'])
-  }
+    ...mapState(["user"]),
+  },
 };
 </script>
 
@@ -244,13 +240,13 @@ export default {
     display: inline-block;
   }
   #formDetails {
-  width: 100%;
-  text-align: center;
-  margin-top: 40px;
-}
-#formDetails p {
-  margin: 30px 0;
-}
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+  }
+  #formDetails p {
+    margin: 30px 0;
+  }
 }
 
 @media only screen and (max-width: 390px) {

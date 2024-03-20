@@ -63,7 +63,7 @@ import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
 import { mapState } from "vuex";
-import {SET_BEARER_HTTP} from "@/apis/axiosClient"
+import { SET_BEARER_HTTP } from "@/apis/axiosClient";
 export default {
   name: "SingleProduct",
   components: { Nav, Footer, Signup },
@@ -90,13 +90,13 @@ export default {
           return;
         }
         const quantity = parseInt(this.quantity);
-        this.loading = true
+        this.loading = true;
         const response = await this.$store.dispatch("handleAddToCart", {
           productId: this.product._id,
           size: this.size,
           quantity: quantity,
         });
-        this.loading = false
+        this.loading = false;
         if (response != null) {
           this.addedToCart = !this.addedToCart;
           setTimeout(() => {
@@ -208,15 +208,19 @@ export default {
 }
 .spinner {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #283D3F;
+  border-top: 4px solid #283d3f;
   border-radius: 50%;
   height: 20px;
   width: 20px;
   animation: spin 2s linear infinite;
 }
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @media only screen and (max-width: 860px) {
   .firstSection {

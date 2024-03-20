@@ -31,11 +31,7 @@
               />
             </td>
             <td>
-              <img
-                :src="cart.product.img"
-                alt=""
-                class="Img"
-              />
+              <img :src="cart.product.img" alt="" class="Img" />
             </td>
             <td>{{ cart.product.name }}</td>
             <td>{{ cart.product.price * cart.quantity }}</td>
@@ -50,25 +46,27 @@
       <div id="firstSide">
         <h2>ADDRESS DETAILS</h2>
         <form>
-          <div class="fillAddressError" v-if="error">Fill in your address for delivery</div>
+          <div class="fillAddressError" v-if="error">
+            Fill in your address for delivery
+          </div>
           <div class="headerForm">
             <div class="childForm">
               <label>Street</label>
-              <input type="text" v-model="street" required/>
+              <input type="text" v-model="street" required />
             </div>
             <div class="childForm">
               <label>City</label>
-              <input type="text" v-model="city" required/>
+              <input type="text" v-model="city" required />
             </div>
           </div>
           <div class="headerForm">
             <div class="childForm">
               <label>Country</label>
-              <input type="text" v-model="country" required/>
+              <input type="text" v-model="country" required />
             </div>
             <div class="childForm">
               <label>Recievers Phone No</label>
-              <input type="text" v-model="recieversPhoneNo" required/>
+              <input type="text" v-model="recieversPhoneNo" required />
             </div>
           </div>
         </form>
@@ -88,7 +86,7 @@
             </tr>
             <tr>
               <td>Totals</td>
-              <td>${{ price + shippingFee}}</td>
+              <td>${{ price + shippingFee }}</td>
             </tr>
           </tbody>
         </table>
@@ -102,14 +100,14 @@
 </template>
 
 <script>
-import Loading from "../components/Loading.vue"
+import Loading from "../components/Loading.vue";
 import Nav from "../components/Nav.vue";
 import Footer from "../components/Footer.vue";
 import IntroBanner from "../components/Intro-Banner.vue";
-import {SET_BEARER_HTTP} from "@/apis/axiosClient"
+import { SET_BEARER_HTTP } from "@/apis/axiosClient";
 export default {
   name: "Cart",
-  components: { Nav, Footer, IntroBanner, Loading},
+  components: { Nav, Footer, IntroBanner, Loading },
   data() {
     return {
       loading: false,
@@ -123,7 +121,7 @@ export default {
       shippingFee: 0,
       error: false,
       emptyCartError: false,
-    }
+    };
   },
   beforeMount() {
     SET_BEARER_HTTP();
@@ -133,28 +131,27 @@ export default {
   methods: {
     async getUsersProduct() {
       try {
-        const response = await this.$store.dispatch('getCart');
-        console.log(response)
-        this.cart = response
+        const response = await this.$store.dispatch("getCart");
+        console.log(response);
+        this.cart = response;
         this.price = this.cart.reduce((acc, init) => {
-          return acc + init.product.price
-        }, 0)
-        if(this.cart.length >= 1) {
-          this.shippingFee = 50
-        } else if( this.cart.length > 4) {
-          this.shippingFee = 100
-        }else {
-          this.shippingFee = 0
+          return acc + init.product.price;
+        }, 0);
+        if (this.cart.length >= 1) {
+          this.shippingFee = 50;
+        } else if (this.cart.length > 4) {
+          this.shippingFee = 100;
+        } else {
+          this.shippingFee = 0;
         }
       } catch (error) {
         throw error;
       }
-
     },
     async removeUsersProduct(id) {
       try {
-        const response = await this.$store.dispatch('removeUserProduct', id)
-        this.getUsersProduct()
+        const response = await this.$store.dispatch("removeUserProduct", id);
+        this.getUsersProduct();
       } catch (error) {
         throw error;
       }
@@ -167,31 +164,38 @@ export default {
           city: this.city,
           country: this.country,
           phoneNo: this.recieversPhoneNo,
-        }
+        };
         this.error = false;
         this.emptyCartError = false;
         if (this.cart) {
-          if (this.street === '' && this.city === '' && this.country === '' && this.recieversPhoneNo === '') {
+          if (
+            this.street === "" &&
+            this.city === "" &&
+            this.country === "" &&
+            this.recieversPhoneNo === ""
+          ) {
             this.error = !this.error;
           } else {
-              this.loading = true;
-              const response = await this.$store.dispatch("placeOrder", {address});
-              console.log(response)
-              if (response) {
-                this.loading = false;
-                await this.$router.push({
-                  name: 'Checkout',
-                })
-              }
+            this.loading = true;
+            const response = await this.$store.dispatch("placeOrder", {
+              address,
+            });
+            console.log(response);
+            if (response) {
+              this.loading = false;
+              await this.$router.push({
+                name: "Checkout",
+              });
+            }
           }
         } else {
-          this.emptyCartError = !this.emptyCartError
+          this.emptyCartError = !this.emptyCartError;
         }
       } catch (error) {
         throw error;
       }
     },
-  }
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--This is the loader doesnt display unless fetching a data-->
-    <Loading v-if="loading"/>
+    <Loading v-if="loading" />
     <!--NavigationToolBar-->
     <Nav />
     <!--Body-->
@@ -122,21 +122,21 @@
 
     <Signup v-if="!user" />
     <!--Footer-->
-    <Footer @update_loading="change_loading"/>
+    <Footer @update_loading="change_loading" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Nav from "../components/Nav.vue";
-import Loading from "../components/Loading.vue"
+import Loading from "../components/Loading.vue";
 import Feature from "../components/Feature.vue";
 import Product from "../components/Product.vue";
 import Footer from "../components/Footer.vue";
 import Signup from "../components/Signup.vue";
 import { mapState } from "vuex";
 import { format } from "date-fns";
-import {SET_BEARER_HTTP} from "@/apis/axiosClient";
+import { SET_BEARER_HTTP } from "@/apis/axiosClient";
 export default {
   name: "home",
   components: { Nav, Feature, Product, Footer, Signup, Loading },
@@ -157,36 +157,33 @@ export default {
   methods: {
     async GET_PRODUCTS() {
       try {
-        const response = this.$store.dispatch('handleGetProduct')
-        return response
+        const response = this.$store.dispatch("handleGetProduct");
+        return response;
       } catch (error) {
-        throw error
+        throw error;
       }
     },
     GET_NEW_PRODUCT_ARRIVAL() {
-      const currentDate = format(
-        new Date,
-        "yyy-MM-dd-hh-mm-ss"
-      );
+      const currentDate = format(new Date(), "yyy-MM-dd-hh-mm-ss");
       //console.log(currentDate);
       //console.log(this.newArrival);
     },
     GET_FEATURED_PRODUCT() {
-      const filtered =  this.products.filter((product) => product.price == 60)
-      this.featuredproducts = filtered
+      const filtered = this.products.filter((product) => product.price == 60);
+      this.featuredproducts = filtered;
     },
     GOTOSHOP() {
       this.$router.push({
-        name: "shop"
-      })
+        name: "shop",
+      });
     },
     change_loading() {
       this.loading = !this.loading;
-    }
+    },
   },
   computed: {
     ...mapState(["user", "products"]),
-  },    
+  },
 };
 </script>
 
