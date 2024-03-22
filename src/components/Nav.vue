@@ -38,9 +38,10 @@
 
         <!--if phone is min of 500px-->
         <div id="menucart">
-          <router-link to="/cart" id="phoneCart"
-            ><font-awesome-icon icon="fa-solid fa-cart-shopping"
-          /></router-link>
+          <router-link to="/cart" id="phoneCart">
+            <font-awesome-icon icon="fa-solid fa-cart-shopping"/>
+            <div class="cartCountand">{{ userProducts.length }}</div>
+        </router-link>
           <div id="menu" @click="showMenu">
             <font-awesome-icon icon="fa-solid fa-bars" />
           </div>
@@ -112,6 +113,20 @@ nav {
   position: absolute;
   top: -8px;
   right: -8px;
+  background-color: #ff5722; /* Change color as per your design */
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.cartCountand {
+  position: absolute;
+  top: 25px;
+  right: 60px;
   background-color: #ff5722; /* Change color as per your design */
   color: white;
   border-radius: 50%;
