@@ -78,6 +78,9 @@ export default {
       showMenuTab: false,
     };
   },
+  beforeMount () {
+    console.log(this.userProducts.length, this.userProducts)
+  },
   methods: {
     showMenu() {
       this.showMenuTab = !this.showMenuTab;
