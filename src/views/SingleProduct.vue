@@ -38,7 +38,7 @@
             <input type="number" value="1" v-model="quantity" required />
             <button class="fontStyle">
               <div class="spinner" v-if="loading"></div>
-              <l v-if="!loading">Add To Cart</l>
+              <div v-if="!loading">Add To Cart</div>
             </button>
           </div>
         </form>

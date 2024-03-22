@@ -14,7 +14,7 @@ export default new Vuex.Store({
     user: null,
     token: null,
     orderProducts: null,
-    userProducts: null,
+    userProducts: [],
     section1: true,
     section2: false,
     singleProduct: null,
@@ -73,6 +73,7 @@ export default new Vuex.Store({
     handleLogOut(state) {
       state.user = null;
       state.token = null;
+      localStorage.clear()
     },
   },
   actions: {
