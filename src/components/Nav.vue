@@ -78,13 +78,7 @@ export default {
       showMenuTab: false,
     };
   },
-  beforeMount () {
-    this.Check();
-  },
   methods: {
-    Check() {
-      
-    },
     showMenu() {
       this.showMenuTab = !this.showMenuTab;
       console.log(this.showMenuTab);
