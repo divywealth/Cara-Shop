@@ -23,7 +23,6 @@ export const addProduct = async (data) => {
 export const getCart = async () => {
   try {
     const response = await BEARER_HTTP.get("v1/users/:userId/products");
-    console.log(response);
     return response.data;
   } catch (error) {
     throw error.response.data;

@@ -132,7 +132,6 @@ export default {
     async getUsersProduct() {
       try {
         const response = await this.$store.dispatch("getCart");
-        console.log(response);
         this.cart = response;
         this.price = this.cart.reduce((acc, init) => {
           return acc + init.product.price;

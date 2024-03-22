@@ -30,6 +30,7 @@
             <li>
               <router-link to="/cart"
                 ><font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                <div class="cartCount">{{ userProducts.length }}</div>
               </router-link>
             </li>
           </ul>
@@ -91,7 +92,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "userProducts"]),
   },
 };
 </script>
@@ -106,6 +107,20 @@ export default {
 nav {
   background: #fefefe;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+.cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff5722; /* Change color as per your design */
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 #header {
   display: flex;

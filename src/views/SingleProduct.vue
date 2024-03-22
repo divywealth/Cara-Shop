@@ -102,6 +102,7 @@ export default {
           setTimeout(() => {
             this.addedToCart = !this.addedToCart;
           }, 10000);
+          await this.$store.dispatch("getCart");
         }
       } catch (error) {
         throw error;

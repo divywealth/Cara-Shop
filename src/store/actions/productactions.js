@@ -29,7 +29,7 @@ export const productActions = {
   async getCart({ commit }) {
     try {
       const response = await getCart();
-      console.log(response);
+      commit("SET_USER_PRODUCT", response)
       return response;
     } catch (error) {
       throw error;

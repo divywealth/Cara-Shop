@@ -14,6 +14,7 @@ export default new Vuex.Store({
     user: null,
     token: null,
     orderProducts: null,
+    userProducts: null,
     section1: true,
     section2: false,
     singleProduct: null,
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     },
     SET_ORDER_PRODUCT(state, payload) {
       Vue.set(state, "orderProducts", payload);
+    },
+    SET_USER_PRODUCT (state, payload) {
+      Vue.set(state, "userProducts", payload);
     },
     showSection2(state) {
       state.section1 = false;
