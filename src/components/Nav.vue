@@ -80,7 +80,7 @@ export default {
     };
   },
   beforeMount () {
-    console.log(this.userProducts.length, this.userProducts)
+    console.log(this.userProducts)
   },
   methods: {
     showMenu() {
