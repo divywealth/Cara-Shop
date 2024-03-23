@@ -30,7 +30,7 @@
             <li>
               <router-link to="/cart"
                 ><font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                <div class="cartCount">{{ userProducts.length }}</div>
+                <div class="cartCount">{{ newProducts.length }}</div>
               </router-link>
             </li>
           </ul>
@@ -40,7 +40,7 @@
         <div id="menucart">
           <router-link to="/cart" id="phoneCart">
             <font-awesome-icon icon="fa-solid fa-cart-shopping"/>
-            <div class="cartCountand">{{ userProducts.length }}</div>
+            <div class="cartCountand">{{ newProducts.length }}</div>
         </router-link>
           <div id="menu" @click="showMenu">
             <font-awesome-icon icon="fa-solid fa-bars" />
@@ -76,6 +76,7 @@ export default {
   data() {
     return {
       showMenuTab: false,
+      newProducts: []
     };
   },
   beforeMount () {
