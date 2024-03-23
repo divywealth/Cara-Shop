@@ -30,7 +30,7 @@
             <li>
               <router-link to="/cart"
                 ><font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                <div class="cartCount">0</div>
+                <div class="cartCount">{{ userProducts.length }}</div>
               </router-link>
             </li>
           </ul>
@@ -40,7 +40,7 @@
         <div id="menucart">
           <router-link to="/cart" id="phoneCart">
             <font-awesome-icon icon="fa-solid fa-cart-shopping"/>
-            <div class="cartCountand">0</div>
+            <div class="cartCountand">{{ userProducts.length }}</div>
         </router-link>
           <div id="menu" @click="showMenu">
             <font-awesome-icon icon="fa-solid fa-bars" />
