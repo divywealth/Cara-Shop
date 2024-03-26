@@ -73,12 +73,16 @@ export default new Vuex.Store({
     handleLogOut(state) {
       state.user = null;
       state.token = null;
-      localStorage.clear()
     },
   },
   actions: {
     ...userActions,
     ...productActions,
+    async handleLogOut({ commit }) {
+      commit("handleLogOut")
+      localStorage.clear();
+      console.log('hi')
+    }
   },
   modules: {},
   plugins: [

@@ -76,10 +76,12 @@ export default {
         this.errors.confirmPassword = null;
         if (this.password.length < 5) {
           this.errors.password = "Password must be atleast 6 chars long";
+          this.loading = false;
           return;
         } else if (this.password !== this.confirmPassword) {
           this.errors.confirmPassword =
             "Confirm password must be same as password";
+            this.loading = false;
           return;
         }
         this.loading = true;

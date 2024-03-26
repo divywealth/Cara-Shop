@@ -88,9 +88,11 @@ export default {
           error ===
           "PhoneNo dosen't have an account try creating an account instead"
         ) {
+          this.loading = false;
           this.errors.phoneNo = error;
           return;
         } else if (error === "Incorrect Password") {
+          this.loading = false;
           this.errors.password = error;
           return;
         }
