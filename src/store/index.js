@@ -78,10 +78,13 @@ export default new Vuex.Store({
   actions: {
     ...userActions,
     ...productActions,
+    async AUTO_LOGOUT ({ commit }) {
+      commit("AUTO_LOGOUT");
+      localStorage.clear();
+    },
     async handleLogOut({ commit }) {
       commit("handleLogOut")
       localStorage.clear();
-      console.log('hi')
     }
   },
   modules: {},
