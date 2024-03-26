@@ -30,7 +30,7 @@
             <li>
               <router-link to="/cart"
                 ><font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                <div class="cartCount">{{ newProducts.length }}</div>
+                <div class="cartCount">{{ userProduct.length }}</div>
               </router-link>
             </li>
           </ul>
@@ -40,7 +40,7 @@
         <div id="menucart">
           <router-link to="/cart" id="phoneCart">
             <font-awesome-icon icon="fa-solid fa-cart-shopping"/>
-            <div class="cartCountand">{{ newProducts.length }}</div>
+            <div class="cartCountand">{{ userProduct.length }}</div>
         </router-link>
           <div id="menu" @click="showMenu">
             <font-awesome-icon icon="fa-solid fa-bars" />
@@ -80,7 +80,7 @@ export default {
     };
   },
   beforeMount () {
-    console.log(this.userProducts)
+    console.log(this.userProduct)
   },
   methods: {
     showMenu() {
@@ -97,7 +97,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["user", "userProducts"]),
+    ...mapState(["user", "userProduct"]),
   },
 };
 </script>

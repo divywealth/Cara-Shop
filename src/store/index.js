@@ -14,7 +14,7 @@ export default new Vuex.Store({
     user: null,
     token: null,
     orderProducts: null,
-    userProducts: 0,
+    userProduct: [],
     section1: true,
     section2: false,
     singleProduct: null,
