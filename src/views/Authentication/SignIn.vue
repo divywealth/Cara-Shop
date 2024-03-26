@@ -79,6 +79,7 @@ export default {
             name: "home",
           });
           SET_BEARER_HTTP();
+          await this.$store.dispatch("getCart");
         }
       } catch (error) {
         this.errors.phoneNo = null;

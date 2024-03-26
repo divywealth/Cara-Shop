@@ -97,6 +97,8 @@ export default {
           await this.$router.push({
             name: "home",
           });
+          SET_BEARER_HTTP();
+          await this.$store.dispatch("getCart");
         }
       } catch (error) {
         console.log(error);
