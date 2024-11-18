@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { SET_BEARER_HTTP } from "@/apis/axiosClient";
 import Loading from "../../components/Loading.vue";
 export default {
   name: "Registration",
@@ -103,7 +104,17 @@ export default {
           await this.$store.dispatch("getCart");
         }
       } catch (error) {
-        console.log(error);
+        if (error == 'user already exists') {
+          this.loading = false
+          this.$toast.open({
+            message: error,
+            type: "error", // You can use 'success', 'info', 'error', or 'warning'
+            // Additional options
+            duration: 5000, // Duration in milliseconds
+            dismissible: true, // Whether the toast can be dismissed
+            position: "top", // Position of the toast
+          });
+        }
       }
     },
   },

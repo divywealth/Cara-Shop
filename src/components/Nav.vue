@@ -51,12 +51,8 @@
           <ul>
             <li id="timesSignOut">
               <font-awesome-icon icon="fa-solid fa-times" @click="showMenu" />
-              <span v-if="!user" @click="goToSignIn"
-                ><router-link to="#">Sign In</router-link></span
-              >
-              <span v-if="user" @click="handleLogOut"
-                ><router-link to="#">Sign Out</router-link></span
-              >
+              <span v-if="!user" @click="goToSignIn">Sign In</span>
+              <span v-if="user" @click="handleLogOut">Sign Out</span>
             </li>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/shop">Shop</router-link></li>
@@ -299,7 +295,7 @@ nav {
     display: flex;
     justify-content: space-between;
   }
-  #timesSignOut a {
+  #timesSignOut span {
     color: #088178;
     margin-left: 180px;
     text-decoration: none;

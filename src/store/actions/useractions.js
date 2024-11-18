@@ -13,7 +13,7 @@ export const userActions = {
       commit("SET_USER", response.user);
       commit("SET_TOKEN", response.access_token);
       return response;
-    } catch (e) {
+    } catch (error) {
       throw error;
     }
   },
